@@ -1,0 +1,21 @@
+# Obsidian workspace and temporary files
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.obsidian/backups/
+.obsidian/.sync/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.temp
+.trash/
+
+# Secrets and credentials
+*.env
+*.env.local
+*.pem
+*.key
+credentials.json
