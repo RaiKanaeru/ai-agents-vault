@@ -17,11 +17,30 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
+:: Setup gh credential helper agar push HTTPS tidak gagal (sekali per sesi)
+where gh >nul 2>&1
+if %ERRORLEVEL% EQU 0 (
+    gh auth setup-git >nul 2>&1
+)
+
 :: Cek apakah repository git sudah diinisialisasi
 if not exist ".git" (
     echo [INFO] Inisialisasi Git repository baru...
     git init
     git branch -M main
+)
+
+:: Cek apakah remote origin sudah ada; kalau belum, coba buat via gh (jika login)
+git remote | findstr "origin" >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    where gh >nul 2>&1
+    if %ERRORLEVEL% EQU 0 (
+        gh auth status >nul 2>&1
+        if !ERRORLEVEL! EQU 0 (
+            echo [INFO] Membuat remote GitHub via gh CLI...
+            gh repo create RaiKanaeru/ai-agents-vault --public --description "Obsidian vault: AI agent memory, profiles, projects, knowledge" --source . --remote origin --push >nul 2>&1
+        )
+    )
 )
 
 :: Pull terlebih dahulu jika sudah ada remote untuk mencegah conflict
