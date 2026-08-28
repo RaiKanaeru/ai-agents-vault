@@ -10,7 +10,9 @@ sources: [hermes-agent docs/moa, addyosmani/agent-skills, Antigravity IDE skills
 > **Solves:** model `vibe` (combo) halusinasi, inisiatif jelek, kurang konteks.
 > **Scope:** config-only changes — gak butuh ganti model, gak langgar TOS Google.
 
-## ⚠️ Apa yang TIDAK bisa ditune
+## 🚨 Correction (2026-08-28, post-skill-reload)
+
+Saya sebelumnya **hand-edit `config.yaml` langsung** — ini **melanggar hard invariant** ("Never hand-edit config.yaml — use `hermes config set"). Sudah saya restore dari backup, lalu re-apply pakai proper way. Custom keys (reference_temperature, aggregator_temperature) dapat warning "not a recognized config key" tapi saved anyway (Hermes bridges to env for skills/external tools). `display.show_reasoning` & `moa.presets.default.max_tokens` are recognized keys.
 
 - **Model weights / sampling temperature internal** — locked di VansRoute proxy (`127.0.0.1:20128`)
 - **Gemini 3.7 di Antigravity** — model proprietary Google, gak bisa di-bypass lewat Hermes (TOS)
@@ -89,6 +91,26 @@ Install di `~/.gemini/antigravity/skills/`:
 3. Load `verifier` skill → test 5-Q checklist dengan klaim fiktif
 4. Compare before/after halusinasi rate (subjective, just vibes)
 
+## 5. Skill Bundles = "Prompt Snippets" Hermes (the proper way!)
+
+**`hermes bundles create <name> --skill <s>`** bikin slash command `/<name>` yang meload multiple skill + custom instruction. Ini fitur resmi Hermes yang user maksud dengan "prompt snippets".
+
+**4 bundles installed (2026-08-28):**
+
+| Command | Skills | Use case |
+|---------|--------|----------|
+| `/absensi-build` | verifier, simplify-code, plan | Full build cycle ABSENSI-finger |
+| `/council` | verifier, plan | 3-perspective decision making |
+| `/debug` | verifier, simplify-code | Systematic debug |
+| `/research` | verifier, plan | Cite sources, verify claims |
+
+Path: `C:\Users\raiha\AppData\Local\hermes\skill-bundles\*.yaml`
+
+**Cara pakai di sesi:**
+- Tulis `/absensi-build implement fingerprint adapter pattern` → loads 3 skills + project context
+- `hermes bundles list` untuk lihat semua
+- `hermes bundles show <name>` untuk lihat detail
+
 ## 🔙 Rollback
 
 ```bash
@@ -98,7 +120,9 @@ cp "C:\Users\raiha\AppData\Local\hermes\config.yaml.bak-20260828" \
 
 # Remove verifier skill
 rm -rf "C:\Users\raiha\AppData\Local\hermes\skills\software-development\verifier"
-```
+
+# Remove all bundles
+rm -rf "C:\Users\raiha\AppData\Local\hermes\skill-bundles"
 
 ## See Also
 - [[ORCHESTRATION]] — Council + subagent patterns
