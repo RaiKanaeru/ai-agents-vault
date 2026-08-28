@@ -2,11 +2,92 @@
 type: moc
 tags: [moc, skills, installed]
 updated: 2026-08-28
+count: 7-official + 1-community = 8 installed this session
 ---
 
 # MOC: Installed Skills
 
-> **Index of all Hermes skills enabled for this profile.** Refresh dengan `hermes skills list`.
+> **Index of all Hermes skills enabled for this profile.** Refresh dengan `hermes skills list`. **88k+ skills** di hub, 118 official dari Nous Research. Catalog: https://hermes-agent.nousresearch.com/docs/skills
+
+## 🆕 Baru Di-install (2026-08-28)
+
+### Official (Nous Research, trusted)
+| Skill | Use | Why |
+|-------|-----|-----|
+| `code-wiki` | Auto-generate docs + Mermaid diagrams dari codebase | Eliminates manual doc writing |
+| `ast-grep` | AST-aware structural code search & refactor | Smarter than grep — structural pattern match |
+| `blackbox` | Delegate ke Blackbox AI multi-model CLI | Multi-model judgment untuk code review |
+| `dspy` | Declarative LM programs, auto-optimize prompts | **Game-changer**: prompt auto-tuning kurangi halusinasi |
+| `fastmcp` | Build, test, deploy Python MCP servers | Build custom MCP untuk task spesifik |
+
+### Community (audited)
+| Skill | Use | Why |
+|-------|-----|-----|
+| `tidyfiles` | Sort & organize files by type/date/rules | Vault maintenance & cleanup |
+
+### Blocked by safety (good signal)
+- `piv` — flagged `agent_config_mod` + `context_exfil`. **Safety audit works.**
+
+## 🎯 Recommended for Vibe Coding (gimic vs real)
+
+### ✅ HIGH-VALUE (install)
+- `dspy` — prompt auto-optimization, real research-grade tool
+- `fastmcp` — build custom MCP untuk use case spesifik
+- `code-wiki` — codebase auto-doc
+- `ast-grep` — structural refactor
+- `blackbox` — multi-model delegation
+- `tidyfiles` — file organization
+- `1password` — kalau pakai 1Password (secrets management)
+- `chroma` — kalau butuh RAG lokal (uteke sudah handle basic, skip kalau cukup)
+
+### ❌ GIMIC / SKIP
+- `accelerate`, `axolotl`, `dspy` (kecuali fine-tune LLM)
+- `actual-setup`, `dcf-model` (finance niche)
+- `comfyui`, `cloudinary` (kalau `image_gen` tool cukup)
+- `3-statement-model`, `valuation` (finance)
+
+## 🔍 Cara Cari Skill Baru
+
+```bash
+# /find-skill equivalent
+hermes skills search <keyword>     # 88k+ indexed
+hermes skills browse --source official  # 118 official
+hermes skills inspect <id>         # preview SKILL.md
+hermes skills list                 # installed
+hermes skills audit                # security check
+hermes skills check                # check for updates
+```
+
+**Catalog sources:**
+- `official` — 118 dari Nous Research (trusted, MIT/Apache)
+- `community` — indexed dari skills.sh
+- `clawhub` — community
+- `browse-sh` — various GitHub
+
+## Skill Authority Hierarchy
+1. **Official** ★ — Nous Research curated, MIT/Apache, low risk
+2. **Trusted community** — stars + audit passed
+3. **Community** — user audit required (check SKILL.md, repo)
+4. **Blocked** — safety flagged, refuse install
+
+## Default Workflow per Task
+| Task | Skill(s) to load |
+|------|------------------|
+| New feature | `plan`, `simplify-code` |
+| Bug fix | `systematic-debugging`, `test-driven-development` |
+| Library/API docs | `context7` (via `"use context7"`) |
+| Codebase auto-doc | `code-wiki` |
+| Structural refactor | `ast-grep`, `simplify-code` |
+| Multi-model review | `blackbox` |
+| Prompt optimization | `dspy` |
+| Custom MCP server | `fastmcp` |
+| Vault cleanup | `tidyfiles` |
+| Research | (none — just web_search) |
+
+## Notes
+- Re-run `hermes skills list` untuk verify trust + status
+- Audit installed: `hermes skills audit`
+- Check updates: `hermes skills check` → `update`
 
 ## Built-in (Hermes core)
 | Name | Category | Use when |
