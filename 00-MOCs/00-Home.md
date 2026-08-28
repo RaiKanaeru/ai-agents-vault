@@ -12,7 +12,18 @@ tags: [moc, root, home]
 2. **[[10-Agents/AGENT_OPERATING_RULES]]** — folder taxonomy, security rules
 3. **[[10-Agents/EFFECTIVE_OBSIDIAN_WORKFLOW]]** — workflow Obsidian harian
 4. **[[10-Agents/00-MOC-Agents]]** — pilih agent profile sesuai task
-5. **[[60-Blueprints/VIBE_CODING]]** — quick reference coding workflow
+5. **[[00-MOCs/01-Skills-Installed]]** — daftar skill Hermes yang aktif
+
+## MOCs
+- [[00-MOCs/00-Home]] — ini
+- [[00-MOCs/01-Skills-Installed]] — index skill
+- [[10-Agents/00-MOC-Agents]] — agent routing
+
+## Blueprints (lengkap & detail)
+- [[60-Blueprints/VIBE_CODING]] — workflow 6-phase
+- [[60-Blueprints/TOOLS_REFERENCE]] — reference lengkap `hermes --help` + toolsets
+- [[60-Blueprints/HERMES_SETUP]] — config & skill loaded
+- [[60-Blueprints/SOURCES]] — repo & article referensi
 
 ## Folder Map
 | Folder | Isi |
