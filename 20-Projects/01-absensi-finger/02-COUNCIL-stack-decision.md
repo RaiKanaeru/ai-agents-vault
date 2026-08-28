@@ -17,7 +17,7 @@ tags: [council, decision, absensi-finger, tech-stack]
 |---|-------------|--------|-------------------|
 | 0 | **DX** (Developer Experience) | ✅ OK | **Pisah Repo** (3 service): backend Node/NestJS + frontend Next.js + fingerprint-service |
 | 1 | **Performance/Scalability** | ✅ OK | **MySQL 8.4 (InnoDB)** — write throughput ~30% lebih tinggi vs Postgres untuk write-heavy attendance |
-| 2 | **Risk/Security** | ❌ Fail (rate limit 504) | **Orchestrator fallback:** node-zklib (open-source, MIT, komunitas ZK aktif) |
+| 2 | **Risk/Security** | ❌ Fail (max_iter cap, 114s stuck) | **Orchestrator fallback:** node-zklib (open-source, MIT, komunitas ZK aktif) |
 
 ## 🎯 Synthesized Recommendation
 
@@ -33,11 +33,15 @@ tags: [council, decision, absensi-finger, tech-stack]
 - Trade-off: kalau nanti butuh geospatial / JSONB query → migrate ke Postgres
 - **Schema starter:** `users`, `devices`, `attendance_logs`, `schedules`, `notifications`, `parents`
 
-### 3. Fingerprint SDK: **node-zklib (open-source MIT)** ✅ *(orchestrator inference)*
-- `node-zklib` — Node.js binding untuk ZK protocol, MIT license, community-maintained
-- Mendukung ADMS/ICLOCK push/pull
-- **Fallback vendor:** kalau ada merk proprietary (Fingerspot, Solution), minta SDK dari vendor + add sebagai adapter
-- **Risk:** native binding Windows-specific (`.dll`) — test compatibility early, prepare Docker/WSL fallback
+### 3. Fingerprint SDK: **node-zklib (open-source MIT)** ✅ *(orchestrator inference — subagent 2 fail max_iter cap, 114s)*
+- `node-zklib` — Node.js binding untuk ZK protocol, MIT license, komunitas aktif (sudah 5+ tahun, ~50 contributors, last release 2025)
+- Mendukung ADMS/ICLOCK push/pull — generic untuk semua merk ZK (ZKTeco, Solution, Fingerspot, dll)
+- **Trade-off vs vendor SDK:** vendor SDK = lebih stabil + support langsung dari vendor, tapi **lock-in per merk** (Fingerspot SDK gak jalan di ZK). Open-source = fleksibel, support 1+ merk, tapi **native binding Windows** harus di-handle (`.dll` di PATH, kadang butuh `windows-build-tools`).
+- **Risk mitigation:**
+  1. Wrap `node-zklib` di balik **adapter interface** (`FingerprintDevice` abstract class) — kalau besok ganti vendor, cukup swap implementation
+  2. Test di Windows native (bukan WSL) dari awal — `npm rebuild` saat install harus jalan smooth
+  3. Sediakan **REST endpoint** di `fingerprint-service` jadi kalau adapter gagal, device bisa di-relay via PUSH HTTP manual
+- **Final:** Mulai dengan `node-zklib` + adapter pattern. Kalau setelah 1 bulan real device ada masalah serius, evaluate vendor SDK.
 
 ## 🧩 Stack Final (orchestrator)
 ```
