@@ -163,6 +163,14 @@ delegate_task(goal="...", role="orchestrator", context="...")
 | Multi-provider | ✅ | ✅ 20+ providers |
 | **For Hermes user** | ❌ plugin for OpenCode | ✅ **Built-in** |
 
+## ⚠️ Pitfalls & Lessons Learned (2026-08-28)
+
+1. **Rate limit on free providers** — `minimax-m3-free` kena 504 di wave ke-3 dalam 1 sesi (proven 2026-08-28, 2 subagents)
+   - Mitigation: `delegate_task` dengan retry policy (planned), atau rotate ke provider lain (`vibe`, `grok-code-fast`)
+2. **Max iterations cap** — subagent `minimax-m3-free` hit `max_iterations` 3x dalam 2 wave
+   - Mitigation: pecah goal lebih kecil, atau pakai model yang lebih capable
+3. **Orchestrator fallback** — kalau 1 subagent fail, orchestrator **langsung isi jawabannya sendiri** (jangan re-dispatch kalau rate limit masih aktif)
+
 **Verdict:** oh-my-opencode-slim bagus tapi untuk **OpenCode**, bukan Hermes. Hermes punya semua primitive-nya, tinggal:
 1. Tambah named agent profiles (5 file markdown baru)
 2. Pakai `delegate_task` lebih sering dengan pattern Council
