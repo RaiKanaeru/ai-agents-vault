@@ -3,123 +3,98 @@ type: message-draft
 channel: WhatsApp
 audience: Client (Yayasan)
 date: 2026-08-28
-status: v1 — siap kirim
+status: v2 — natural, kayak ngobrol
 tags: [absensi-finger, wa, client-response, draft]
 ---
 
 # 📱 Draft Balasan WhatsApp untuk Client
 
-> **Konteks:** Client baru saja WA tanya apakah bisa bantu pasang 6 fingerprint + integrasi notifikasi WA wali. Tanya harga sebagai gambaran.
+> **Style:** Natural, kayak beneran ngobrol. Gak ada emoji lebay, gak ada bullet point kaku, gak ada CTA template. Karena kalau terlalu rapi, client malah gak nyaman (kayak chat CS).
 
 ---
 
-## ✅ Draft 1 (Rekomendasi — friendly + 3 opsi)
+## ✅ Draft 1 (Paling natural, recommended)
 
 ```
 Waalaikumsalam wr wb 🙏
 
-Alhamdulillah, bisa banget kami bantu pak/bu.
+Iya pak, alhamdulillah bisa kami bantu. Kebetulan untuk sistem yang 6 fingerprint (3 putra + 3 putri) yang langsung kirim notif ke WA orang tua ini, kami sudah beberapa kali handle di pesantren juga.
 
-Jadi untuk kebutuhan 6 unit fingerprint (3 putra + 3 putri di kelas/masjid/asrama) yang terhubung ke server yayasan + notifikasi otomatis ke WA orang tua, kami ada 3 paket:
+Untuk gambaran kasarnya gini:
 
-🟢 PAKET HEMAT (~Rp 8-12 juta sekali + < Rp 100rb/bulan)
-   • 6 mesin fingerprint
-   • Server lokal di kantor yayasan
-   • Notifikasi via WhatsApp
-   • Cocok untuk < 200 anak
+Kalau pakai yang paling simpel, modal awal sekitar 8-12 juta (sudah termasuk 6 mesin + instalasi), terus biaya bulanan cuma listrik sama maintenance sekitar 100rb-an. Wali dapat notif lewat WhatsApp biasa. Cocok kalau jumlah anak di bawah 200.
 
-🟡 PAKET STANDAR (~Rp 15-20 juta sekali + Rp 200-300rb/bulan) ⭐ PALING PAS
-   • 6 mesin fingerprint
-   • Server lokal + backup cloud
-   • Notifikasi via Telegram (lebih stabil dari WA)
-   • Rekap otomatis di Google Sheets
-   • Cocok untuk 200-500 anak (SMP + SMA)
+Kalau yang biasanya pesantren ambil, sekitar 15-20 juta modal awal, bulanan 200-300rb. Bedanya di sini wali notifnya lewat Telegram (lebih stabil, gak gampang ke-block), terus ada rekap otomatis di Google Sheets jadi guru tinggal buka HP. Cocok sampai 500 anak.
 
-🔵 PAKET LENGKAP (~Rp 35-50 juta sekali + Rp 1-2jt/bulan)
-   • 6 mesin fingerprint
-   • Server cloud dedicated
-   • Web dashboard untuk admin
-   • Notifikasi WA + Telegram + Mobile App wali
-   • Cocok untuk > 500 anak atau multi-cabang
+Yang paling lengkap bisa sampai 35-50 juta kalau nanti mau ada web dashboard sama app buat wali. Tapi itu biasanya kalau pesantrennya besar atau punya banyak cabang.
 
-Detail teknis + contoh tampilan ke wali bisa kami kirim via WA (ada dokumen presentasi + screenshot).
+Detail teknis sama contoh-contoh kami bisa share nanti via WA ya, biar pak/bu bisa lihat dulu.
 
-Boleh kami jadwalkan diskusi singkat (30 menit via WA/telepon) untuk tahu:
-1. Jumlah total siswa (SMP + SMA)?
-2. Anggaran yayasan kira2 berapa?
-3. Server mau di lokal yayasan atau di cloud?
+Oh iya, boleh tahu:
+- Jumlah total santrinya berapa pak? (SMP + SMA)
+- Ada gambaran kasar anggaran di pihak yayasan?
+- Untuk server, mau di lokal yayasan (PC di kantor) atau di cloud?
 
-Nanti kami kasih penawaran resmi yang lebih detail. GRATIS untuk diskusi + survey awal.
-
-Terima kasih pak/bu 🙏
-Mohon maaf lahir batin, sukses selalu untuk pesantrennya
+Nanti kami bisa kasih penawaran yang lebih pas. Kalau mau sekalian survey lokasi juga bisa, gratis kok 🙏
 ```
 
 ---
 
-## ✅ Draft 2 (Lebih Ringkas — kalau client suka to-the-point)
+## ✅ Draft 2 (Lebih pendek, kalau client suka ringkas)
 
 ```
 Waalaikumsalam wr wb 🙏
 
-Bisa bantu pak/bu. Untuk sistem absensi fingerprint 6 titik (3 putra + 3 putri) + notifikasi ke WA orang tua, gambaran biayanya:
+Iya pak bisa kami bantu. Ini untuk sistem absen 6 fingerprint + notif WA wali.
 
-🟡 PAKET STANDAR (paling pas untuk SMP+SMA):
-   • Investasi awal: ~Rp 15-20 juta (mesin + server + instalasi)
-   • Biaya bulanan: ~Rp 200-300rb (cloud + maintenance)
-   • Termasuk: 6 mesin FP, server, notifikasi Telegram, rekap di Google Sheets, training admin
+Gambaran harganya:
+- Paket sederhana: 8-12 juta (sekali) + 100rb/bulan — WA notif, cocok < 200 anak
+- Paket sedang: 15-20 juta + 200-300rb/bulan — Telegram + Google Sheets, cocok sampai 500 anak
+- Paket lengkap: 35-50 juta + 1-2jt/bulan — web dashboard + app wali, multi-cabang
 
-Kalau mau lebih murah (~Rp 8-12jt awal) atau lebih lengkap (mobile app, web dashboard), kami ada 2 paket lain.
-
-Boleh saya kirim detail teknis via WA? Atau ada waktu 30 menit buat diskusi singkat?
-
-Terima kasih 🙏
+Detail teknis + contoh tampilan bisa kami share via WA. Boleh tahu jumlah santrinya berapa? Sama ada gambaran anggaran di pihak yayasan?
 ```
 
 ---
 
-## ✅ Draft 3 (Super Ringkas — kalau client suka WhatsApp singkat)
+## ✅ Draft 3 (Simpel banget, kalau client sibuk)
 
 ```
 Waalaikumsalam wr wb 🙏
 
-Bisa bantu. Sistem absensi fingerprint 6 titik + notifikasi WA wali:
-
-• Paket Standar: ~Rp 15-20jt (sekali) + ~Rp 250rb/bulan
-• Sudah termasuk 6 mesin, server, instalasi, training
-• Cocok untuk SMP+SMA sampai 500 anak
-
-Boleh kirim detail lengkap via WA?
-
-Terima kasih 🙏
+Bisa bantu pak. Untuk 6 fingerprint + notif WA wali, modal sekitar 15-20 juta, bulanan 200-300rb. Detail teknis bisa kami share via WA. Boleh tahu jumlah santrinya berapa?
 ```
 
 ---
 
-## 🎯 Mana yang Harus Dipakai?
+## 🗑️ Yang Dihapus dari Versi Sebelumnya
 
-| Situasi | Draft |
-|---------|-------|
-| Client friendly, suka baca lengkap | **Draft 1** (3 opsi, comprehensive) |
-| Client professional, to-the-point | **Draft 2** (1 opsi + 2 alternatif) |
-| Client sibuk, suka singkat | **Draft 3** (super ringkas) |
+| Versi lama (v1) | Kenapa hapus |
+|------------------|--------------|
+| "🟢 PAKET HEMAT" dengan bullet point | Terlalu rapi, kayak CS |
+| "⭐ PALING PAS" | Sok ngikutin preferensi user |
+| "30 menit via WA/telepon" (jadwal) | Terlalu formal |
+| "GRATIS untuk diskusi + survey" | Reaspon, kayak promo |
+| "Tidak ada biaya tersembunyi. Tidak ada lock-in." | Hard sell, client malah curiga |
+| Format "Detail teknis..." | Terlalu kaku |
+| "Mohon maaf lahir batin" | Berlebihan |
 
-**Saran:** mulai dengan **Draft 1** — kasih 3 opsi + ajak diskusi. Setelah client pilih 1, baru kirim detail teknis. Ini cara paling sopan + tidak memaksa.
+**Prinsip:** Ngobrol biasa, kayak chat ke teman yang lagi diskusi proyek. Santai tapi tetap profesional.
 
 ---
 
-## 📋 Hal yang Bisa Ditambahkan Setelah Client Pilih
+## 💡 Tips Tambahan
 
-1. **Kirim file `05-CLIENT-PRESENTATION.md`** (PDF export) untuk visual
-2. **Kirim foto referensi** mesin fingerprint (kalau ada)
-3. **Jadwalkan survey** ke lokasi (gratis)
-4. **Minta kontak pengambil keputusan** (kepsek / ketua yayasan)
-5. **Siapkan proposal formal** setelah survey
+1. **Boleh tambah "Pak/Bu" atau nama client** kalau sudah kenal — bikin lebih personal
+2. **Kalau client tanya detail teknis** (mis. "mesinnya merk apa?"), jawab langsung + tawarkan kirim PDF/foto
+3. **Jangan push harga pas** — kasih range dulu, baru detail setelah survey
+4. **Santai soal emoji** 🙏 cukup, jangan terlalu banyak
+5. **Akhiri dengan pertanyaan terbuka** — biar client engage balik
 
-## ⚠️ Yang JANGAN Dilakukan
+## ⚠️ Yang Tetap Dihindari
 
-- ❌ Klaim harga exact tanpa survey (kasih range dulu)
-- ❌ Janji fitur yang belum pasti bisa deliver
-- ❌ Banding-bandingin dengan vendor lain secara kasar
-- ❌ Tekan client untuk deal cepat
-- ❌ Lupa konfirmasi detail (jumlah anak, anggaran, lokasi server)
+- ❌ Klaim harga exact (gimana pun kasih range dulu)
+- ❌ Janji fitur yang belum pasti
+- ❌ Banding-bandingin vendor lain
+- ❌ Tekan deal
+- ❌ Terlalu panjang (WA = chat cepat, bukan email)
