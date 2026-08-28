@@ -6,16 +6,14 @@ Read first, every session: [[00-MOCs/00-Home]] → [[10-Agents/USER_PROFILE]] �
 ## Memory & Vault Structure
 - Obsidian Root: `D:\Obsidian\AI-Agents`
 - Directory Taxonomy:
-  - `00-Inbox` — quick capture, sort later
   - `00-MOCs` — Map of Content (hub notes)
   - `10-Agents` — Core agent profiles, operating rules, workflow guidelines
   - `20-Projects` — Project notes + PRD per project
-  - `30-Sessions` — Daily session logs (ephemeral, archive monthly)
+  - `30-Sessions` — Daily session logs (move to `_Raw` monthly)
   - `40-Templates` — Reusable blueprint: PRD, AGENT.md, Session-Log, Project-Note, Knowledge-Atomic
   - `50-Knowledge` — Atomic notes: `_Raw`, `Bugfixes`, `Concepts`, `Patterns`
-  - `60-Blueprints` — Workflow / pattern dokumen besar (VIBE_CODING, HERMES_SETUP, SOURCES)
-  - `70-Tools` — Scripts, snippets, config
-  - `99-Archive` — Old session logs, retired projects
+  - `60-Blueprints` — Workflow / pattern documents (VIBE_CODING, HERMES_SETUP, SOURCES, TOOLS_REFERENCE)
+  - `70-Tools` — Reusable scripts & snippets
 
 ## Security
 - Strictly avoid saving raw API keys, session cookies, database credentials, or secret env vars into the vault.
