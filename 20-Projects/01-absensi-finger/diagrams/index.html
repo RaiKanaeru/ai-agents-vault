@@ -14,7 +14,7 @@ h2 { margin-top: 40px; padding: 10px 16px; background: #1e293b; color: #fff; bor
 footer { margin-top: 48px; font-size: 13px; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 16px; }
 </style></head><body>
 <h1>🖼️ Galeri Diagram — Absensi Fingerprint Pesantren</h1>
-<p>33 diagram · render Mermaid v10 · resolusi 2× (retina) · Bahasa Indonesia</p>
+<p>38 diagram · render Mermaid v10 · resolusi 2× (retina) · Bahasa Indonesia</p>
 <h2>📊 02-SYSTEM-DIAGRAMS — Sistem Terpilih (dengan Web)</h2>
 <div class="diagram">
 <h3>DAD Level 0 — Konteks (pelaku + sistem + saluran notifikasi)</h3>
@@ -163,6 +163,32 @@ footer { margin-top: 48px; font-size: 13px; color: #64748b; border-top: 1px soli
 <div class="meta">04-MULTI-CONCEPT-5-SCHEMAS_20.png · 195.9 KB</div>
 <img src="04-MULTI-CONCEPT-5-SCHEMAS_20.png" alt="Konsep 5 — ERD: perangkat mobile, token FCM, pengajuan izin" loading="lazy">
 </div>
+<h2>📞 05-WA-META-OFFICIAL — WhatsApp Jalur Resmi Meta (Cloud API)</h2>
+<div class="diagram">
+<h3>DAD Level 0 — Konteks integrasi Meta Cloud API</h3>
+<div class="meta">05-WA-META-OFFICIAL_1.png · 96.0 KB</div>
+<img src="05-WA-META-OFFICIAL_1.png" alt="DAD Level 0 — Konteks integrasi Meta Cloud API" loading="lazy">
+</div>
+<div class="diagram">
+<h3>DAD Level 1 — 5 proses: terima, notifikasi, kirim, webhook, kepatuhan</h3>
+<div class="meta">05-WA-META-OFFICIAL_2.png · 255.0 KB</div>
+<img src="05-WA-META-OFFICIAL_2.png" alt="DAD Level 1 — 5 proses: terima, notifikasi, kirim, webhook, kepatuhan" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Sekuens — Scan absen → kirim notifikasi wali</h3>
+<div class="meta">05-WA-META-OFFICIAL_3.png · 153.7 KB</div>
+<img src="05-WA-META-OFFICIAL_3.png" alt="Sekuens — Scan absen → kirim notifikasi wali" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Sekuens — Wali ajukan izin via chat → approval admin</h3>
+<div class="meta">05-WA-META-OFFICIAL_4.png · 125.4 KB</div>
+<img src="05-WA-META-OFFICIAL_4.png" alt="Sekuens — Wali ajukan izin via chat → approval admin" loading="lazy">
+</div>
+<div class="diagram">
+<h3>ERD — Tabel pendukung (pesan, template, webhook, opt-in)</h3>
+<div class="meta">05-WA-META-OFFICIAL_5.png · 191.3 KB</div>
+<img src="05-WA-META-OFFICIAL_5.png" alt="ERD — Tabel pendukung (pesan, template, webhook, opt-in)" loading="lazy">
+</div>
 <h2>🌐 SERVER_NETWORK_DEPLOYMENT — 3 Skenario Server</h2>
 <div class="diagram">
 <h3>Skenario A: Offline-Only (lokal NAT, tanpa IP publik)</h3>
@@ -184,5 +210,5 @@ footer { margin-top: 48px; font-size: 13px; color: #64748b; border-top: 1px soli
 <div class="meta">SERVER_NETWORK_DEPLOYMENT_4.png · 87.4 KB</div>
 <img src="SERVER_NETWORK_DEPLOYMENT_4.png" alt="Bagan alir pemilihan skenario" loading="lazy">
 </div>
-<footer>Dibuat otomatis dari blok <code>mermaid</code> di dokumen vault. Sumber: 02, 03, 04 (20-Projects/01-absensi-finger) + SERVER_NETWORK_DEPLOYMENT (60-Blueprints).</footer>
+<footer>Dibuat otomatis dari blok <code>mermaid</code> di dokumen vault. Sumber: 02, 03, 04, 05 (20-Projects/01-absensi-finger) + SERVER_NETWORK_DEPLOYMENT (60-Blueprints).</footer>
 </body></html>

@@ -66,7 +66,7 @@ flowchart LR
 
     FP(["6 Unit Mesin Fingerprint"])
     System{{"Sistem Absensi (Konsep 1)"}}
-    WA(["Gerbang WhatsApp Baileys"])
+    WA(["Gerbang WhatsApp (lihat 05-WA-META-OFFICIAL)"])
 
     Santri -->|"Pindai sidik jari"| FP
     FP -->|"Data pemindaian HTTP ICLOCK"| System
@@ -95,7 +95,7 @@ flowchart TB
 
     subgraph P3["P3: Pengirim Notifikasi"]
         P3a["3.1 Format pesan WhatsApp"]
-        P3b["3.2 Kirim via Baileys"]
+        P3b["3.2 Kirim via WhatsApp (jalur resmi Meta, lihat 05)"]
     end
 
     subgraph P4["P4: Penanganan Perintah Admin"]
@@ -208,7 +208,7 @@ erDiagram
 
 ### Kekurangan
 
-- Risiko pemblokiran nomor WhatsApp karena menggunakan Baileys yang tidak resmi.
+- Risiko pemblokiran nomor WhatsApp berkurang drastis karena menggunakan jalur resmi Meta (lihat `05-WA-META-OFFICIAL.md`).
 - Admin harus mengoperasikan sistem melalui chat, bukan tampilan visual.
 - Tidak memiliki dasbor visual untuk rekapitulasi.
 
@@ -386,7 +386,7 @@ erDiagram
 
 ### Fitur Tambahan Dibandingkan Konsep 1
 
-- Bot Telegram lebih stabil dibandingkan WhatsApp Baileys (API resmi).
+- Dibandingkan WhatsApp non-resmi, jalur Telegram lebih sederhana, tetapi WA jalur Meta (lihat `05-WA-META-OFFICIAL.md`) kini setara dari sisi stabilitas.
 - Sinkronisasi otomatis ke Google Sheets untuk rekapitulasi.
 - Penjadwalan dan perizinan melalui perintah bot.
 - Sembilan perintah admin meliputi: daftar, hapus, rekap, cari, siarkan, dan lain-lain.
