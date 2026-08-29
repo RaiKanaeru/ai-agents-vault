@@ -20,6 +20,8 @@ status: rancu-clarified
 
 **Rekomendasi default pesantren**: Mode 1 (server lokal) atau Mode 2 (kalau server cloud).
 
+**Asumsi**: 6 unit ZKTeco (FP1-FP6, lihat [[04-MULTI-CONCEPT-5-SCHEMAS]] untuk penomoran per lokasi).
+
 ## Mode 1: LANGSUNG (Tanpa Perantara) — PALING SEDERHANA
 
 ### Topologi

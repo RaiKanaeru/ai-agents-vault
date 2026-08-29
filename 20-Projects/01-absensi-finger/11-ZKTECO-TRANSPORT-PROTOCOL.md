@@ -19,6 +19,8 @@ status: rancu-clarified
 | **ADMS / Web Service (PUSH)** | Device → server HTTPS | ❌ Manual | Format ZKTeco | ❌ Alternatif |
 | **USB Serial (offline)** | Manual | Selalu | - | Backup only |
 
+**Asumsi**: 6 unit ZKTeco (FP1-FP6) di pesantren, lihat [[04-MULTI-CONCEPT-5-SCHEMAS]] untuk penomoran.
+
 ## Siapa yang "Kirim"? — 2 Mode
 
 ### Mode PULL (Socket :4370) ← KITA PAKAI

@@ -22,6 +22,8 @@ status: rancu-clarified
 
 **Template ≠ gambar mentah.** Template = hasil ekstraksi fitur (~1-2KB per jari, format array minutiae). Gambar = file .bmp hasil capture sensor (~50-200KB).
 
+**Asumsi setup pesantren**: 6 unit ZKTeco (FP1-FP6, lihat [[04-MULTI-CONCEPT-5-SCHEMAS]]). Template sidik jari harus di-sync ke semua 6 unit agar 1 jari bisa verifikasi di semua device.
+
 ## Kenapa ZKTeco Tidak Kirim Template Sembarangan
 
 1. **Privacy** — sidik jari adalah biometrik **permanen seumur hidup**. Kalau bocor, tidak bisa "reset" seperti password
