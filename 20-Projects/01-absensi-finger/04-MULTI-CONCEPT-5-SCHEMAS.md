@@ -1,16 +1,16 @@
 ---
 jenis: arsitektur-perbandingan
-topik: Absensi Fingerprint — 4 Konsep Arsitektur (Spektrum Lengkap)
+topik: Absensi Fingerprint — 5 Konsep Arsitektur (Spektrum Lengkap)
 tanggal: 2026-08-28
-status: v2 — 4 konsep, masing-masing dengan DAD L0 + L1 + Sekuens + ERD
+status: v3 — 5 konsep (v2 + Konsep 5 Mobile App), masing-masing dengan DAD L0 + L1 + Sekuens + ERD
 tag: [absensi-finger, multi-konsep, arsitektur, perbandingan, sederhana-ke-lengkap]
 terkait: [proposal_absensi_fingerprint_pesantren.md, 02-SYSTEM-DIAGRAMS.md, 03-NO-WEB-SOLUTION.md]
 supersedes: v1 (7 konsep, konsep 5/6/7 dihapus karena di luar lingkup pesantren tunggal)
 ---
 
-# Empat Konsep Sistem Absensi Fingerprint Pesantren
+# Lima Konsep Sistem Absensi Fingerprint Pesantren
 
-Dokumen ini membandingkan empat konsep arsitektur sistem absensi, dari yang paling sederhana (Konsep 1) sampai yang paling lengkap (Konsep 4). Yayasan atau pihak sekolah dapat memilih konsep yang paling sesuai dengan kebutuhan, bujet, dan kapasitas sumber daya manusia yang tersedia.
+Dokumen ini membandingkan lima konsep arsitektur sistem absensi, dari yang paling sederhana (Konsep 1) sampai yang paling lengkap (Konsep 5: Mobile App). Yayasan atau pihak sekolah dapat memilih konsep yang paling sesuai dengan kebutuhan, bujet, dan kapasitas sumber daya manusia yang tersedia.
 
 **Setiap konsep dilengkapi empat diagram lengkap:**
 - **DAD L0** (Diagram Alir Data Level 0) — gambaran umum sistem dengan dunia luar
@@ -43,6 +43,7 @@ Seluruh konsep di dokumen ini menggunakan skema penomoran perangkat yang sama.
 | 2  | Minimalis Telegram       | Telegram                 | Bot Telegram + Google Sheets   | di bawah Rp 150 ribu  | 4 minggu           | sampai 300 pengguna     |
 | 3  | Ringan Web + Telegram    | Telegram + Web Wali      | Web Admin + Google Sheets      | di bawah Rp 300 ribu  | 6 minggu           | 300–500 pengguna        |
 | 4  | Standar Web + Multi-Saluran | Notifikasi Push + WhatsApp + Telegram | Web Admin + Sheets | di bawah Rp 500 ribu  | 8 minggu           | 500–1.000 pengguna      |
+| 5  | Mobile App (APK)         | Notifikasi Push aplikasi | Aplikasi Mobile Admin + Wali   | di bawah Rp 600 ribu  | 10 minggu          | 500–2.000 pengguna      |
 
 Detail masing-masing konsep, diagram, kelebihan, dan kekurangan tersedia di bagian bawah.
 
@@ -924,6 +925,305 @@ erDiagram
 
 ---
 
+## Konsep 5: Mobile App (APK) — Dashboard & Pelaporan Lewat Aplikasi
+
+> **Inti:** tanpa web sama sekali. Semua interaksi wali **dan** admin lewat **aplikasi Android** (APK). Wali: notifikasi push + dashboard anak. Admin: approval izin, rekap, grafik, kelola santri — semuanya di HP.
+
+**Biaya operasional:** di bawah Rp 600 ribu per bulan (VPS 4 GB + FCM gratis + publikasi APK).
+**Waktu pengembangan:** 10 minggu (backend + 2 aplikasi Android).
+**Kapasitas pengguna:** 500–2.000 pengguna.
+**Saluran utama:** Notifikasi Push (FCM) + Aplikasi Mobile (Wali & Admin).
+
+### Rancangan Aplikasi
+
+| Aplikasi | Pengguna | Fitur inti |
+|----------|----------|-----------|
+| **APK Wali** | Wali/santri | Login (no. HP + OTP), dashboard status anak, riwayat absensi per bulan, notifikasi push per scan, ajukan izin/sakit (lampir foto), ubah pengaturan notifikasi |
+| **APK Admin** | Admin/kepala pesantren | Dashboard realtime (siapa baru saja scan), approval izin/sakit, rekap kelas & asrama, grafik tren, kelola santri (CRUD), kelola perangkat (status 6 FP), ekspor laporan PDF/Excel, siarkan pengumuman |
+
+**Teknologi aplikasi:** Flutter (1 basis kode → APK Android + opsi iOS nanti) atau React Native. Distribusi: APK langsung (sideload) atau Play Store (biaya $25 sekali). Notifikasi: Firebase Cloud Messaging (FCM) — gratis, tanpa batas jumlah.
+
+**Penting:** **tidak ada website**. Backend tetap REST API yang sama, tapi tidak dibungkus halaman web. Semua konsumsi API dilakukan aplikasi mobile.
+
+### DAD Level 0 — Konteks
+
+```mermaid
+flowchart LR
+    Santri(["Santri"])
+    Wali(["Wali / Orang Tua"])
+    Admin(["Admin Yayasan"])
+
+    FP(["6 Unit Mesin Fingerprint"])
+    System{{"Sistem Absensi (Konsep 5)"}}
+    APK_W(["APK Wali (Android)"])
+    APK_A(["APK Admin (Android)"])
+    FCM(["Firebase Cloud Messaging"])
+
+    Santri -->|"Pindai sidik jari"| FP
+    FP -->|"Data pemindaian HTTP ICLOCK"| System
+    System -->|"Kirim notifikasi push"| FCM
+    FCM -->|"Pesan push ke HP"| APK_W
+    Wali -->|"Login OTP, cek dashboard"| APK_W
+    Wali -->|"Ajukan izin/sakit"| APK_W
+    APK_W -->|"Kirim pengajuan (REST API)"| System
+    System -->|"Data dashboard + rekap"| APK_A
+    Admin -->|"Login + approval izin, kelola santri"| APK_A
+    System -->|"Push alert (anak alfa)"| FCM
+    FCM -->|"Pesan push ke HP"| APK_A
+```
+
+### DAD Level 1 — Dekomposisi Proses
+
+```mermaid
+flowchart TB
+    Santri(["Santri"])
+    Wali(["Wali"])
+    Admin(["Admin"])
+
+    FP(["6 Mesin FP"])
+    APK_W(["APK Wali"])
+    APK_A(["APK Admin"])
+    FCM(["Firebase Cloud Messaging"])
+
+    P1["P1<br/>Terima Pemindaian<br/>+ verifikasi identitas"]
+    P2["P2<br/>Proses Absensi<br/>+ tentukan status"]
+    P3["P3<br/>Kirim Notifikasi Push<br/>(via FCM)"]
+    P4["P4<br/>Layanan Mobile API<br/>(dashboard, riwayat, pengajuan)"]
+    P5["P5<br/>Kelola Pengajuan Izin<br/>+ approval admin"]
+    P6["P6<br/>Rekap & Laporan<br/>(harian, bulanan, PDF)"]
+
+    D1[("D1 pengguna")]
+    D2[("D2 catatan_absensi")]
+    D3[("D3 perangkat")]
+    D4[("D4 pengajuan_izin")]
+    D5[("D5 notifikasi")]
+    D6[("D6 rekap_bulanan")]
+
+    Santri -->|"pindai"| FP
+    FP -->|"data scan"| P1
+    P1 -->|"data tervalidasi"| P2
+    P1 -->|"baca/tulis"| D1
+    P1 -->|"baca status perangkat"| D3
+    P2 -->|"tulis absensi"| D2
+    P2 -->|"data absensi"| P3
+    P2 -->|"data absensi"| P6
+    P3 -->|"tulis log"| D5
+    P3 -->|"permintaan push"| FCM
+    FCM -->|"notifikasi"| APK_W
+    FCM -->|"push alert"| APK_A
+
+    Wali -->|"login + dashboard"| APK_W
+    APK_W -->|"REST API"| P4
+    P4 -->|"baca riwayat"| D2
+    P4 -->|"baca profil"| D1
+    Wali -->|"ajukan izin"| APK_W
+    APK_W -->|"kirim pengajuan"| P5
+    P5 -->|"tulis"| D4
+    P5 -->|"notif approval"| P3
+
+    Admin -->|"dashboard + approval"| APK_A
+    APK_A -->|"REST API"| P4
+    APK_A -->|"approval / tolak"| P5
+    APK_A -->|"kelola santri & perangkat"| P4
+    P4 -->|"tulis profil & perangkat"| D1
+    P4 -->|"tulis perangkat"| D3
+    P6 -->|"tulis rekap"| D6
+    P6 -->|"laporan PDF/Excel"| APK_A
+```
+
+### Diagram Sekuens — Pemindaian + Pengajuan Izin via Aplikasi
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor S as Santri
+    participant FP as Mesin FP
+    participant API as Backend API
+    participant DB as MySQL
+    participant FCM as Firebase FCM
+    participant AW as APK Wali
+    participant W as Wali
+    participant AA as APK Admin
+    participant A as Admin
+
+    rect rgb(235, 245, 255)
+    note over S,FCM: Alur 1 — Pemindaian absensi + push ke wali
+    S->>FP: Tempelkan jari
+    FP->>FP: Cocokkan sidik (lokal)
+    FP->>API: POST /iclock/cdata (data scan)
+    API->>DB: INSERT catatan_absensi (status: HADIR)
+    API->>FCM: POST push {token_wali, "Ahmad hadir 07.15"}
+    FCM->>AW: Notifikasi push
+    AW->>W: Tampilkan notifikasi + badge dashboard
+    W->>AW: Buka aplikasi (opsional)
+    AW->>API: GET /wali/anak/riwayat
+    API->>DB: SELECT riwayat 30 hari
+    API-->>AW: JSON riwayat
+    AW-->>W: Tampilkan dashboard anak
+    end
+
+    rect rgb(255, 245, 230)
+    note over W,A: Alur 2 — Pengajuan izin/sakit + approval admin
+    W->>AW: Isi form izin (tanggal, alasan, foto)
+    AW->>API: POST /izin {nis, tanggal, alasan, foto}
+    API->>DB: INSERT pengajuan_izin (status: MENUNGGU)
+    API->>FCM: Push ke admin "Pengajuan izin baru"
+    FCM->>AA: Notifikasi push
+    A->>AA: Buka + review + setujui
+    AA->>API: PATCH /izin/{id} {status: DISETUJUI}
+    API->>DB: UPDATE pengajuan_izin
+    API->>FCM: Push ke wali "Izin disetujui"
+    FCM->>AW: Notifikasi push
+    AW-->>W: Tampilkan status izin disetujui
+    end
+```
+
+### ERD — Struktur Basis Data (tambahan modul mobile)
+
+```mermaid
+erDiagram
+    PENGGUNA ||--o{ ANAK : "wali dari"
+    PENGGUNA ||--o{ PENGAJUAN_IZIN : "mengajukan"
+    PENGGUNA ||--o{ PERANGKAT_MOBILE : "terdaftar di"
+    ANAK ||--o{ CATATAN_ABSENSI : "memiliki"
+    ANAK ||--o{ PENGAJUAN_IZIN : "diajukan untuk"
+    PERANGKAT_MOBILE ||--o{ TOKEN_FCM : "memiliki"
+    PENGAJUAN_IZIN ||--o{ RIWAYAT_APPROVAL : "memiliki"
+
+    PENGGUNA {
+        bigint id PK
+        varchar nama
+        varchar no_hp "login OTP"
+        enum peran "WALI, ADMIN, GURU"
+        boolean aktif
+    }
+    ANAK {
+        bigint id PK
+        bigint id_wali FK
+        varchar nis
+        varchar nama
+        varchar kelas
+        enum status "AKTIF, LULUS, KELUAR"
+    }
+    PERANGKAT_MOBILE {
+        bigint id PK
+        bigint id_pengguna FK
+        varchar model "Samsung A14, dll"
+        varchar versi_aplikasi
+        datetime login_terakhir
+        boolean aktif
+    }
+    TOKEN_FCM {
+        bigint id PK
+        bigint id_perangkat FK
+        varchar token "token push"
+        datetime diperbarui_pada
+    }
+    PENGAJUAN_IZIN {
+        bigint id PK
+        bigint id_anak FK
+        bigint id_wali FK
+        date tanggal_mulai
+        date tanggal_selesai
+        enum jenis "IZIN, SAKIT"
+        text alasan
+        varchar foto "path foto pendukung"
+        enum status "MENUNGGU, DISETUJUI, DITOLAK"
+        bigint disetujui_oleh FK
+        datetime waktu_approval
+    }
+    RIWAYAT_APPROVAL {
+        bigint id PK
+        bigint id_pengajuan FK
+        bigint id_admin FK
+        enum aksi "DISETUJUI, DITOLAK"
+        text catatan
+        datetime waktu
+    }
+    CATATAN_ABSENSI {
+        bigint id PK
+        bigint id_anak FK
+        bigint id_perangkat FK
+        datetime waktu_scan
+        enum status "HADIR, TELAT, IZIN, SAKIT, ALFA"
+        int menit_telat
+    }
+```
+
+**Perbedaan ERD vs Konsep 2–4:** tabel `notifikasi` diganti `perangkat_mobile` + `token_fcm` (push per perangkat, bukan per saluran chat), plus 2 tabel baru `pengajuan_izin` + `riwayat_approval` (fitur izin via aplikasi).
+
+### Alur Kerja Harian
+
+| Waktu | Peristiwa |
+|-------|-----------|
+| 06.30 | Santri scan di FP asrama (absen pulang asrama) |
+| 06.45 | Push ke HP wali: "Ananda hadir asrama 06.30" |
+| 07.00 | Santri scan di FP kelas |
+| 07.01 | Push: "Ananda hadir kelas 07.00" |
+| Siang | Admin buka APK → dashboard realtime → lihat 3 santri belum scan |
+| Siang | Wali ajukan izin via APK (anak sakit) → admin approve dari HP |
+| 17.00 | Rekap harian otomatis → tersimpan + bisa diekspor PDF |
+| 22.00 | Audit asrama otomatis → push alert kalau ada santri tidak pulang |
+
+### Stack Teknis
+
+```
+backend/         → Node 20 + Express + Prisma + MySQL 8.4
+                 → + firebase-admin (kirim FCM push)
+                 → + endpoint REST khusus mobile (/wali/*, /admin/*, /izin/*)
+                 → + penyimpanan foto pengajuan (lokal atau S3-compatible)
+mobile/
+  wali/          → Flutter (Dart) — APK Wali
+  admin/         → Flutter (Dart) — APK Admin
+fingerprint/     → Node 20 + node-zklib + TS (sama seperti konsep lain)
+```
+
+**Endpoint API mobile utama:**
+
+| Endpoint | Metode | Fungsi |
+|----------|--------|--------|
+| `/auth/otp-kirim` | POST | Kirim OTP login ke no. HP |
+| `/auth/otp-verifikasi` | POST | Verifikasi OTP → JWT |
+| `/wali/dashboard` | GET | Status anak hari ini + badge |
+| `/wali/riwayat?bulan=` | GET | Riwayat absensi per bulan |
+| `/izin` | POST | Ajukan izin/sakit (multipart, lampir foto) |
+| `/izin/{id}/approval` | PATCH | Admin setujui/tolak |
+| `/admin/realtime` | GET | Feed scan realtime (polling 5 detik atau SSE) |
+| `/admin/rekap?kelas=&bulan=` | GET | Rekap per kelas/bulan |
+| `/admin/santri` | POST/PATCH | CRUD santri |
+| `/admin/laporan/pdf` | GET | Ekspor laporan PDF |
+| `/admin/siaran` | POST | Broadcast pengumuman push ke semua wali |
+
+### Distribusi APK
+
+| Cara | Biaya | Catatan |
+|------|-------|---------|
+| **Sideload APK** (kirim file ke HP wali) | Gratis | Perlu aktifkan "Install aplikasi tidak dikenal". Cocok mulai cepat |
+| **Play Store** | $25 sekali (~Rp 440 ribu) | Update otomatis, lebih kredibel, perlu akun Google Play Console |
+| **MDM/enterprise** (kalau yayasan punya) | Tergantung | Kontrol penuh, jarang perlu |
+
+**Rekomendasi:** mulai sideload (cukup kirim APK via WhatsApp ke wali), pindah Play Store setelah stabil.
+
+### Kelebihan
+
+- ✅ Tanpa web sama sekali — semua lewat aplikasi di HP
+- ✅ Dashboard & laporan visual di HP (wali + admin)
+- ✅ Notifikasi push gratis dan instan (FCM)
+- ✅ Fitur izin/sakit via aplikasi + approval admin dari HP (tidak perlu chat)
+- ✅ Ekspor PDF/Excel langsung dari aplikasi
+- ✅ Login OTP no. HP — wali tidak perlu ingat password
+- ✅ Skalabel sampai 2.000 pengguna
+
+### Kekurangan
+
+- ❌ Waktu pengembangan terlama (10 minggu — 2 aplikasi + backend)
+- ❌ Wali harus install APK (friction awal; sideload perlu izin "unknown source")
+- ❌ HP wali harus online untuk notifikasi instan (push butuh internet)
+- ❌ Perlu akun Firebase + Play Console (gratis/murah tapi setup tambahan)
+- ❌ Kalau HP wali lawas (Android 7 ke bawah), kompatibilitas perlu dicek
+
+---
+
 ## Panduan Memilih Konsep
 
 | Kondisi                                                              | Konsep yang Disarankan |
@@ -932,9 +1232,10 @@ erDiagram
 | Bujet di bawah Rp 200 ribu per bulan dan ingin stabilitas lebih baik       | Konsep 2                |
 | Ingin dasbor visual untuk admin dengan bujet di bawah Rp 350 ribu per bulan | Konsep 3                |
 | Lebih dari 500 pengguna dengan kebutuhan multi-cabang                       | Konsep 4                |
+| Wali & admin ingin dashboard + laporan lewat aplikasi HP (APK), tanpa web   | Konsep 5                |
 
 ## Catatan Akhir
 
-Semua konsep pada dokumen ini menggunakan enam unit fingerprint dengan penomoran FP1 sampai FP6 sesuai tabel penomoran di awal. Yayasan dapat memilih konsep berdasarkan bujet, kapasitas pengguna, dan kebutuhan fitur. Konsep 1 sampai 2 dapat dijalankan dengan biaya rendah dan waktu pengembangan singkat, sedangkan konsep 3 sampai 4 memberikan fitur yang lebih lengkap (dasbor visual, multi-saluran notifikasi, multi-cabang).
+Semua konsep pada dokumen ini menggunakan enam unit fingerprint dengan penomoran FP1 sampai FP6 sesuai tabel penomoran di awal. Yayasan dapat memilih konsep berdasarkan bujet, kapasitas pengguna, dan kebutuhan fitur. Konsep 1 sampai 2 dapat dijalankan dengan biaya rendah dan waktu pengembangan singkat, konsep 3 sampai 4 memberikan fitur yang lebih lengkap (dasbor visual, multi-saluran notifikasi, multi-cabang), dan Konsep 5 menghadirkan dashboard + pelaporan penuh lewat aplikasi mobile tanpa website.
 
 Untuk kebutuhan di atas 1.000 pengguna lintas yayasan, analitik prediktif, atau integrasi CCTV/RFID — di luar lingkup dokumen ini, dapat dievaluasi sebagai proyek terpisah.

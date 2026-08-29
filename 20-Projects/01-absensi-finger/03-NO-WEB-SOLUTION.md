@@ -4,7 +4,7 @@ topik: Absensi Fingerprint — Tanpa Web (Telegram Bot + Sheets)
 tanggal: 2026-08-28
 status: v2 — diterjemahkan penuh ke Bahasa Indonesia
 tag: [absensi-finger, telegram, tanpa-web, sheets, penyederhanaan]
-terkait: [02-SYSTEM-DIAGRAMS.md, 04-MULTI-CONCEPT-4-SCHEMAS.md]
+terkait: [02-SYSTEM-DIAGRAMS.md, 04-MULTI-CONCEPT-5-SCHEMAS.md]
 menggantikan: asumsi "perlu web admin dashboard"
 ---
 
@@ -215,6 +215,6 @@ Saat itu, tambah `frontend/` (Next.js) yang memakai API yang sudah ada — **tan
 ## Lihat Juga
 
 - `02-SYSTEM-DIAGRAMS.md` — Diagram arsitektur lengkap (dengan web)
-- `04-MULTI-CONCEPT-4-SCHEMAS.md` — 4 konsep perbandingan arsitektur
+- `04-MULTI-CONCEPT-5-SCHEMAS.md` — 4 konsep perbandingan arsitektur
 - `02-COUNCIL-stack-decision.md` — Alasan pemilihan stack
 - `60-Blueprints/HERMES_TUNING.md` — Konfigurasi anti-halusinasi

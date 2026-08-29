@@ -4,7 +4,7 @@ topik: Server & Jaringan — Zero Trust, IP Publik, 3 Skenario Deployment
 tanggal: 2026-08-28
 status: v2 — diterjemahkan penuh ke Bahasa Indonesia
 tag: [cetak-biru, server, jaringan, zero-trust, cloudflare, deployment, keamanan, reusable]
-terkait: [04-MULTI-CONCEPT-4-SCHEMAS.md, 02-SYSTEM-DIAGRAMS.md]
+terkait: [04-MULTI-CONCEPT-5-SCHEMAS.md, 02-SYSTEM-DIAGRAMS.md]
 berlaku_untuk: [absensi-finger, semua proyek self-hosted berikutnya]
 ---
 
@@ -414,6 +414,7 @@ flowchart TD
 | Konsep 2 (Telegram) | **B** (kalau wali dari rumah) atau **A** (kalau cukup di sekolah) |
 | Konsep 3 (Ringan Web) | **B** (Cloudflare Tunnel, hemat + aman) |
 | Konsep 4 (Standar) | **B** atau **C** (tergantung bujet & keahlian) |
+| Konsep 5 (Mobile App) | **B** (VPS 4 GB + Cloudflare Tunnel untuk API mobile) |
 
 ## 🛡️ Hardening Keamanan (Semua Skenario)
 
@@ -455,7 +456,7 @@ sudo systemctl enable fail2ban
 
 ## 🔗 Lihat Juga
 
-- `04-MULTI-CONCEPT-4-SCHEMAS.md` — 4 konsep sistem
+- `04-MULTI-CONCEPT-5-SCHEMAS.md` — 4 konsep sistem
 - `02-SYSTEM-DIAGRAMS.md` — Diagram detail teknis
 - `03-NO-WEB-SOLUTION.md` — Hanya Telegram (Skenario A)
 - `60-Blueprints/HERMES_TUNING.md` — Konfigurasi anti-halusinasi
