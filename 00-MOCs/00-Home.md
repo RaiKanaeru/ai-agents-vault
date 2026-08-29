@@ -57,6 +57,9 @@ cp 40-Templates/Project-Note.md 20-Projects/<name>/README.md
 - **Vault path:** `D:\Obsidian\AI-Agents`
 - **Vault kedua (lama):** `C:\Users\raiha\Documents\Obsidian Vault` (sudah mature, contains `08 - AI Skills`, Excalidraw, .smart-env)
 
+## Active Projects
+- [[smart-pesantren-attendance]] — **Absensi Fingerprint Pesantren** (current focus, Aug 2026)
+
 ## See Also
 - [[60-Blueprints/VIBE_CODING]] — workflow coding
 - [[60-Blueprints/HERMES_SETUP]] — konfigurasi Hermes
