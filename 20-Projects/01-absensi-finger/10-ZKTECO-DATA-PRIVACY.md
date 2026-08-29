@@ -58,7 +58,7 @@ Template sidik jari **harus ada di SEMUA device** agar 1 jari yang sama bisa ver
 ### Flow Sync Template
 
 ```
-Enrollment di Unit 1 (Kelas Putra, master)
+Enrollment di Unit 1 (master)
         ↓
 Server ambil template dari Unit 1 via CMD_USER_FP (node-zklib handle format proprietary)
         ↓
@@ -69,7 +69,7 @@ Sekarang 6 unit bisa verifikasi jari yang sama
 
 ### Konsekuensi Riil
 
-1. **Harus pilih 1 unit jadi "master"** untuk enrollment — biasanya Unit 1 (lokasi paling sentral, misal Kelas Putra)
+1. **Harus pilih 1 unit jadi "master"** untuk enrollment — biasanya Unit 1 (lokasi paling sentral)
 2. **Server-side template sync** harus reliable — kalau server mati saat enroll, harus ulang
 3. **Kalau master unit rusak/reset → SEMUA template hilang** (tidak ada backup readable di server)
 4. **Solusi backup**:
@@ -109,7 +109,7 @@ Template sidik jari yang TIDAK keluar dari device = **compliance lebih mudah** (
 ## Saran untuk Klien
 
 1. **Diskusikan consent form** dengan wali saat enrollment — template bukan "gambar", tapi tetap biometrik
-2. **Pilih 1 device master** untuk enrollment (Unit 1, Kelas Putra)
+2. **Pilih 1 device master** untuk enrollment (Unit 1)
 3. **Setup backup** — pertimbangkan Mode 2 (Mini-PC gateway) untuk simpan template ke SD card
 4. **Prosedur disaster recovery** — kalau master device rusak, harus ada rencana re-enroll
 

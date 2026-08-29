@@ -67,7 +67,7 @@ flowchart TB
 
     subgraph S2["P2: Mesin Absensi (layanan sisi server)"]
         P2a["2.1 Cocokkan id_pengguna berdasarkan hash sidik jari"]
-        P2b["2.2 Tentukan jenis acara Kelas atau Masjid atau Asrama"]
+        P2b["2.2 Tentukan jenis acara"]
         P2c["2.3 Cek jadwal dan keterlambatan"]
         P2d["2.4 Simpan ke tabel catatan absensi"]
     end
@@ -123,7 +123,7 @@ sequenceDiagram
 
     S->>FP: Tempelkan jari
     FP->>FP: Cocokkan sidik jari secara lokal
-    FP->>FP: Tentukan acara Kelas atau Masjid atau Asrama
+    FP->>FP: Tentukan acara
     FP->>FS: POST /iclock/cdata berisi id_pengguna stempel waktu acara
     Note over FS: ADMS atau ICLOCK push HTTP multipart
 
@@ -143,9 +143,9 @@ sequenceDiagram
     activate NR
     NR->>NR: Pilih kanal FCM utama
     NR->>FCM: kirim notifikasi
-    FCM-->>W: Push Ananda A hadir Kelas 07.15
+    FCM-->>W: Push "Ananda A hadir 07.15"
 
-    alt Kondisi penting (alfa sholat atau telat asrama)
+    alt Kondisi penting (alfa atau telat)
         NR->>NR: Pilih kanal WhatsApp Meta API
         NR->>W: Pesan WhatsApp dengan templat yang disetujui
     end
@@ -199,7 +199,7 @@ flowchart TD
 
     Mulai --> P2{Waktu berapa?}
     P2 -->|"17.00 WIB"| Ringkasan[Picu: ringkasan harian ke semua wali melalui templat WA satu pesan per orang per hari]
-    P2 -->|"22.00 WIB"| AuditMalam[Picu: audit asrama untuk siapa yang belum pulang]
+    P2 -->>|22.00 WIB| AuditMalam[Picu: audit untuk yang belum pulang]
     P2 -->|"Waktu lain"| Lewati[Lewati]
     Ringkasan --> Selesai
     AuditMalam --> Jalur3
@@ -255,7 +255,7 @@ erDiagram
 
     PERANGKAT {
         varchar id PK "nomor seri perangkat ZK"
-        varchar nama "Kelas Putra atau Masjid Putra atau Asrama Putra atau Kelas Putri atau Masjid Putri atau Asrama Putri"
+        varchar nama "nama unit/lokasi, contoh: Unit 1"
         varchar id_lokasi FK
         varchar alamat_ip
         varchar shared_secret
@@ -265,9 +265,9 @@ erDiagram
 
     LOKASI {
         varchar id PK
-        varchar nama "contoh: Kelas 1, Masjid, Asrama"
-        enum jenis "KELAS atau MASJID atau ASRAMA"
-        enum zona_jenis_kelamin "PUTRA atau PUTRI"
+        varchar nama "nama unit/lokasi"
+        enum jenis "kategori acara"
+        enum zona_jenis_kelamin "opsional"
     }
 
     JADWAL {

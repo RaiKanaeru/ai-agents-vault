@@ -20,7 +20,7 @@ Pertanyaan kritis yang diangkat:
 
 1. **Siapa kelola user/santri baru?** (registrasi, sidik jari, penghapusan)
 2. **Siapa pantau rekap absen?** (harian, bulanan, per anak)
-3. **Siapa atur jadwal?** (kelas SMP vs SMA, shift masjid, asrama)
+3. **Siapa atur jadwal?** (jadwal kegiatan pesantren)
 
 Tanpa web → 3 saluran alternatif:
 
@@ -29,12 +29,12 @@ Tanpa web → 3 saluran alternatif:
 ```mermaid
 flowchart LR
     subgraph TITIK["6 Unit FP (LOKASI)"]
-        FP1[FP Kelas Putra]
-        FP2[FP Masjid Putra]
-        FP3[FP Asrama Putra]
-        FP4[FP Kelas Putri]
-        FP5[FP Masjid Putri]
-        FP6[FP Asrama Putri]
+        FP1[FP Unit 1]
+        FP2[FP Unit 2]
+        FP3[FP Unit 3]
+        FP4[FP Unit 4]
+        FP5[FP Unit 5]
+        FP6[FP Unit 6]
     end
 
     subgraph SERVER["SERVER (PC lokal/VPS)"]
@@ -105,7 +105,7 @@ sequenceDiagram
     activate API
     API->>DB: SELECT pengguna + jadwal
     API->>DB: INSERT catatan_absensi
-    API->>TG: kirim pesan "Ananda A hadir Kelas 07.15 ✓"
+    API->>TG: kirim pesan "Ananda A hadir 07.15 ✓"
     deactivate API
 
     TG->>W: Push chat ke wali
@@ -120,7 +120,7 @@ sequenceDiagram
 | `/daftar <nama> <nis> <kelas>` | Tambah santri | `/daftar Ahmad Fauzi 24001 SMP-1A` |
 | `/hapussantri <nis>` | Nonaktifkan santri | `/hapussantri 24001` |
 | `/perangkat daftar` | Lihat 6 perangkat & status | `/perangkat daftar` |
-| `/perangkat atur <id> <nama>` | Ganti nama perangkat | `/perangkat atur FPK1 "Kelas Putra Lt 1"` |
+| `/perangkat atur FPK1 "Nama Unit 1"` | Atur nama perangkat | `/perangkat atur FPK1 "Nama Unit 1"` |
 | `/rekap [hari\|minggu\|bulan]` | Rekap absen | `/rekap hari` |
 | `/cari <nama>` | Cek riwayat per anak | `/cari ahmad fauzi` |
 | `/sinkron` | Kirim manual ke Sheets | `/sinkron` |
@@ -138,7 +138,7 @@ sequenceDiagram
 1. **Sheet "Rekap Harian"** (perbarui otomatis tiap scan):
    ```
    Waktu | NIS | Nama | Kelas | Lokasi | Status | Telat(m)
-   07:15:23 | 24001 | Ahmad Fauzi | SMP-1A | Kelas Putra | HADIR | 0
+   07:15:23 | 24001 | Ahmad Fauzi | SMP-1A | Unit 1 | HADIR | 0
    07:45:11 | 24002 | ... | TELAT | 30
    ```
 
@@ -148,7 +148,7 @@ sequenceDiagram
    24001 | Ahmad Fauzi | 28 | 2 | 0 | 93%
    ```
 
-**Manfaat:** Admin tinggal buka Sheets di HP/laptop, filter per kelas, urutkan telat terbanyak. Ekspor PDF/Excel kalau perlu laporan ke yayasan.
+**Manfaat:** Admin tinggal buka Sheets di HP/laptop, filter per unit, urutkan telat terbanyak. Ekspor PDF/Excel kalau perlu laporan ke yayasan.
 
 ## 🔄 Pembaruan Stack Council (Sederhana)
 
@@ -181,7 +181,7 @@ Tugas otomatis yang berjalan sendiri, tanpa admin:
 |------|-------|
 | Tiap 5 menit | Dorong data baru ke Google Sheets |
 | Tiap jam 17.00 | Kirim ringkasan harian ke semua wali via Telegram |
-| Tiap jam 22.00 | Audit asrama (siapa yang belum pulang) |
+| Tiap jam 22.00 | Audit unit (siapa yang belum pulang) |
 | Tiap jam 06.00 | Hapus notifikasi lama (>30 hari) |
 | Tiap jam 03.00 | Backup MySQL → `/var/backups/absensi/` |
 

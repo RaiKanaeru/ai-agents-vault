@@ -26,12 +26,12 @@ Seluruh konsep di dokumen ini menggunakan skema penomoran perangkat yang sama.
 
 | Kode | Lokasi          | Gender |
 |------|-----------------|--------|
-| FP1  | Kelas 1         | Putra  |
-| FP2  | Masjid          | Putra  |
-| FP3  | Asrama          | Putra  |
-| FP4  | Kelas 1         | Putri  |
-| FP5  | Masjid          | Putri  |
-| FP6  | Asrama          | Putri  |
+| FP1  | Unit 1          | Putra  |
+| FP2  | Unit 2          | Putra  |
+| FP3  | Unit 3          | Putra  |
+| FP4  | Unit 4          | Putri  |
+| FP5  | Unit 5          | Putri  |
+| FP6  | Unit 6          | Putri  |
 
 ---
 
@@ -134,7 +134,7 @@ sequenceDiagram
     API->>DB: INSERT catatan_absensi
     deactivate API
 
-    API->>WA: Kirim pesan "Ananda A hadir Kelas 07.15"
+    API->>WA: Kirim pesan "Ananda A hadir 07.15"
     WA->>W: Push chat WhatsApp
 
     A->>WA: Ketik "/rekap hari"
@@ -302,7 +302,7 @@ sequenceDiagram
     activate API
     API->>DB: SELECT user + jadwal
     API->>DB: INSERT catatan_absensi
-    API->>TG: kirim pesan "Ananda A hadir Kelas 07.15"
+    API->>TG: kirim pesan "Ananda A hadir 07.15"
     deactivate API
 
     TG->>W: Push chat Telegram
@@ -356,9 +356,9 @@ erDiagram
     }
     LOKASI {
         varchar id PK
-        varchar nama
-        enum jenis "KELAS, MASJID, ASRAMA"
-        enum zona_jk "PUTRA, PUTRI"
+        varchar nama "nama unit/lokasi"
+        enum jenis "kategori acara"
+        enum zona_jk "opsional"
     }
     PERANGKAT {
         varchar id PK

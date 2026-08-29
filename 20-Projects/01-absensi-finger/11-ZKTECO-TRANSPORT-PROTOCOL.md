@@ -65,7 +65,7 @@ status: rancu-clarified
   "timestamp": "2026-08-29 06:32:15",   // dari RTC internal device
   "status": 0,                          // 0=masuk, 1=pulang, 2=istirahat-keluar
   "punch": 0,                           // 0=sidik jari, 1=kartu, 2=password, 3=wajah
-  "device_id": "FP3-MASJID-PUTRA"       // opsional, dari config server
+  "device_id": "FP1-UNIT-1"             // opsional, dari config server
 }
 ```
 
