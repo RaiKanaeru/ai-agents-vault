@@ -1236,6 +1236,15 @@ fingerprint/     → Node 20 + node-zklib + TS (sama seperti konsep lain)
 
 ## Catatan Akhir
 
-Semua konsep pada dokumen ini menggunakan enam unit fingerprint dengan penomoran FP1 sampai FP6 sesuai tabel penomoran di awal. Yayasan dapat memilih konsep berdasarkan bujet, kapasitas pengguna, dan kebutuhan fitur. Konsep 1 sampai 2 dapat dijalankan dengan biaya rendah dan waktu pengembangan singkat, konsep 3 sampai 4 memberikan fitur yang lebih lengkap (dasbor visual, multi-saluran notifikasi, multi-cabang), dan Konsep 5 menghadirkan dashboard + pelaporan penuh lewat aplikasi mobile tanpa website.
+Semua konsep pada dokumen ini menggunakan enam unit fingerprint dengan penomoran FP1 sampai FP6 sesuai tabel penomoran di awal. Yayasan dapat memilih konsep berdasarkan bujet, kapasitas pengguna, dan kebutuhan fitur. Konsep 1 sampai 2 dapat dijalankan dengan biaya rendah dan waktu pengembangan singkat, konsep 3 sampai 4 memberikan fitur yang lebih lengkap (dasbor visual, multi-saluran notifikasi, multi-cabang), dan Konsep 5 menghadirkan dashboard + pelaporan penuh lewat aplikasi mobile.
+
+## Lampiran: Mode Arsitektur ZKTeco (Lintas Konsep)
+
+Semua 5 konsep pada dokumen ini menggunakan protokol transport yang **sama** untuk device ZKTeco:
+- **Protokol**: PULL TCP socket :4370 dengan library `node-zklib` (lihat [[11-ZKTECO-TRANSPORT-PROTOCOL]])
+- **Payload**: log absensi (uid, user_id, timestamp, status, punch) — **TIDAK** termasuk template sidik jari (lihat [[10-ZKTECO-DATA-PRIVACY]])
+- **Mode koneksi** bervariasi per konsep (lihat [[09-ZKTECO-ARCHITECTURE-MODES]]):
+  - Konsep 1, 2, 5 (server lokal pesantren): Mode 1 (langsung tanpa perantara)
+  - Konsep 3, 4 (server cloud VPS): Mode 2 (Mini-PC gateway) atau Mode 1 via Cloudflare Tunnel
 
 Untuk kebutuhan di atas 1.000 pengguna lintas yayasan, analitik prediktif, atau integrasi CCTV/RFID — di luar lingkup dokumen ini, dapat dievaluasi sebagai proyek terpisah.

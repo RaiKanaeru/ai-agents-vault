@@ -22,6 +22,11 @@ updated: 2026-08-29
 6. **Skema WhatsApp resmi Meta** → `05-WA-META-OFFICIAL.md`
 7. **Galeri diagram visual** → `diagrams/index.html`
 
+## Dokumen ZKTeco Spesifik (`20-Projects/01-absensi-finger/`)
+8. **3 mode arsitektur** → `09-ZKTECO-ARCHITECTURE-MODES.md` (langsung / gateway / laptop+vendor)
+9. **Privasi data biometrik** → `10-ZKTECO-DATA-PRIVACY.md` (apa yang boleh keluar, UU PDP)
+10. **Protokol transport** → `11-ZKTECO-TRANSPORT-PROTOCOL.md` (PULL socket :4370 vs PUSH ADMS)
+
 ## 5 Konsep (ringkasan)
 | # | Nama | Untuk | Biaya/bln |
 |---|------|-------|-----------|
@@ -43,7 +48,8 @@ updated: 2026-08-29
 
 ## Session Log
 - `30-Sessions/2026-08-29-lokalisasi-4-konsep-absensi.md`
-- `30-Sessions/2026-08-29-mobile-app-wa-meta.md` (planned)
+- `30-Sessions/2026-08-29-mobile-app-wa-meta.md`
+- `30-Sessions/2026-08-29-zkteco-architecture-discussion.md` (3 mode arsitektur + privasi + protokol)
 
 ## Diagram Visual
 Buka `diagrams/index.html` (38 PNG) — grup: 02 Sistem, 03 Tanpa Web, 04 Konsep 1-5, 05 WA Meta, SERVER.

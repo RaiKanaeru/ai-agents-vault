@@ -27,6 +27,14 @@ tags: [council, decision, absensi-finger, tech-stack]
 - `fingerprint-service/` (Node + `node-zklib`, port 3002) — Bridge ADMS/ICLOCK ke backend via internal HTTP
 - **Alasan:** 50–500 user tidak butuh monorepo overhead; deployment Windows-friendly; isolate native binding (zklib butuh libzkfp.dll Windows)
 
+### 1a. Koneksi ZKTeco: **Tanpa Laptop/PC Perantara** ✅
+- 6 device ZKTeco → switch LAN → server (lokal pesantren, atau cloud via Cloudflare Tunnel / Mini-PC gateway)
+- **TIDAK perlu** laptop Windows intermediary + software ZKBioTime (Mode 3, sangat tidak efisien)
+- 3 mode arsitektur tersedia — lihat [[09-ZKTECO-ARCHITECTURE-MODES]]
+- Default: Mode 1 (langsung) untuk server lokal, Mode 2 (Mini-PC gateway) untuk server cloud
+- Library: `node-zklib` dengan protokol PULL TCP socket :4370 (lihat [[11-ZKTECO-TRANSPORT-PROTOCOL]])
+- Privacy: ZKTeco tidak kirim template sidik jari (lihat [[10-ZKTECO-DATA-PRIVACY]])
+
 ### 2. Database: **MySQL 8.4 InnoDB** ✅
 - Write-heavy workload (4-6×/hari × 500 user = ~3000 inserts/hari, plus history accumulation)
 - InnoDB redo log lebih ringan dari MVCC Postgres untuk single-node
