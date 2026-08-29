@@ -78,12 +78,27 @@ User request:
 
 - `D:\CODING-2026\Inventaris_GTP\app_v2_rest.py` (10540 baris, source baru + REST)
 - `D:\CODING-2026\Inventaris_GTP\app_v2_rest.spec` (PyInstaller spec baru)
+- `D:\CODING-2026\Inventaris_GTP\app_v2_refactor.spec` (spec entry `code_refactor/main.py`)
 - `D:\CODING-2026\Inventaris_GTP\main_api.py` (server: tambah /api/gudang/db-exec + token admin)
 - `D:\CODING-2026\Inventaris_GTP\code_refactor\app_v2_rest.py.bak` (checkpoint)
 - `D:\CODING-2026\Inventaris_GTP\code_refactor\_methods_map.txt` (peta method)
 - `D:\CODING-2026\Inventaris_GTP\code_refactor\_module_assignments.md` (assignment plan)
 - `D:\CODING-2026\Inventaris_GTP\.hermes\plans\2026-08-30_015500-refactor-app-v2-rest.md`
 - Server: `~/gtp_api_v2/main_api.py` (deployed)
+
+## Fase 2 — Refactor COMPLETE (02:50 WIB)
+
+12 sub-agent total (4 fase-1, 2 fase-2, 6 gap-filler). Hasil akhir:
+
+- **23 mixin module + main.py** — coverage 119/119 method (6 sisanya = `_RestCursor/_RestConn` DB wrapper)
+- Gap-filler agents: login_sessions (8), pages (7), scan_pack (12), sj_st (12), dashboard_misc (15), history_pdf (5)
+- Audit AST: bare names + import top-level → 21 file fix via `_fix_imports2.py`
+- 23× `import psycopg2` dalam method di-comment via `_fix_psycopg2.py`
+- `main.py` = composition root: 20 mixin + `_RestAdapterMixin` (8 adapter method) + CTk base, MRO 30 classes
+- Smoke test PASS (constructor + Excel recovery 2354 unit + destroy bersih)
+- Build EXE `app_v2_refactor.spec` → jalan background
+
+Kesalahan baru didokumentasi: `40-Refactor/KESALAHAN-3.md` (import globals mixin, duplikat MRO, bare call, lazy psycopg2).
 
 ## Server Status
 

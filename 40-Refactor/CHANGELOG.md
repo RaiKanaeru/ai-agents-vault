@@ -12,7 +12,15 @@ version: 0.2.0-in-progress
 - Server endpoint `POST /api/gudang/db-exec` — generic SQL executor (SELECT bebas, WRITE butuh ADMIN token)
 - Token admin: sha256[:48] dari `bridge-login`, cache Redis TTL 24 jam
 - `_RestCursor` + `_RestConn`: wrapper psycopg2-compatible yang call REST API
-- Mixin refactor: 10540 baris → ~16 module di `code_refactor/` (core/ui/data/utils + main.py)
+- Refactor COMPLETE: 10540 baris → 23 mixin module + main.py di `code_refactor/`
+  - core/: rest_bridge, crash_handler, shortcuts
+  - data/: prefix_detector, excel_io, seed, email
+  - ui/: window_init, pages, dashboard_misc, login_sessions, scan_pack, sj_st, history_pdf, tracking, histori_sj, histori_st, master_unit, stok_rekap, user_admin, backup, excel_sync, close_handler, events
+  - utils/: debounce, helpers
+  - main.py: composition root + `_RestAdapterMixin` (adapter `self.method()` → module function, single point of change untuk swap backend Go)
+- MRO: PagesMixin paling depan — menyelesaikan duplikat 7 method `buat_halaman_*` tanpa edit
+- Smoke test PASS: constructor OK, security mode, Excel recovery cloud 2354 unit, destroy bersih
+- Spec baru `app_v2_refactor.spec` (entry `code_refactor/main.py`)
 - Checkpoint dekat: `code_refactor/app_v2_rest.py.bak` (590KB)
 
 ### Changed
