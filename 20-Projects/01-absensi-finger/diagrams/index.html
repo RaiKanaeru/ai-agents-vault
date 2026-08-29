@@ -1,118 +1,168 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>ABSENSI Fingerprint — Diagram Gallery</title>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galeri Diagram — Absensi Fingerprint Pesantren</title>
 <style>
-body { font-family: system-ui, -apple-system, sans-serif; max-width: 1400px; margin: 0 auto; padding: 24px; background: #f8f9fa; color: #222; }
-h1 { border-bottom: 3px solid #2563eb; padding-bottom: 12px; }
-h2 { margin-top: 40px; padding: 12px 16px; background: #1e293b; color: #fff; border-radius: 6px; }
-.diagram { background: #fff; margin: 16px 0; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-.diagram h3 { margin: 0 0 8px 0; color: #334155; }
-.diagram img { max-width: 100%; height: auto; border: 1px solid #e5e7eb; border-radius: 4px; }
-.meta { font-size: 12px; color: #64748b; margin-bottom: 8px; }
+body { font-family: system-ui, sans-serif; max-width: 1300px; margin: 0 auto; padding: 24px; background: #f8fafc; color: #1e293b; }
+h1 { border-bottom: 3px solid #2563eb; padding-bottom: 10px; }
+h2 { margin-top: 40px; padding: 10px 16px; background: #1e293b; color: #fff; border-radius: 6px; }
+.diagram { background: #fff; margin: 18px 0; padding: 20px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+.diagram h3 { margin: 0 0 6px 0; color: #334155; font-size: 15px; }
+.diagram img { max-width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 4px; }
+.meta { font-size: 12px; color: #64748b; margin-bottom: 10px; }
+.missing { color: #dc2626; font-weight: 600; }
+footer { margin-top: 48px; font-size: 13px; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 16px; }
 </style></head><body>
-<h1>🖼️ ABSENSI Fingerprint — Diagram Gallery (20 PNG)</h1>
-<p>Rendered dari file .md di vault. Semua diagram divalidasi via mermaid.parse() + dirender via Puppeteer/Chrome.</p>
-<h2>📊 02-SYSTEM-DIAGRAMS (DFD + Sequence + ERD)</h2>
+<h1>🖼️ Galeri Diagram — Absensi Fingerprint Pesantren</h1>
+<p>29 diagram · render Mermaid v10 · resolusi 2× (retina) · Bahasa Indonesia</p>
+<h2>📊 02-SYSTEM-DIAGRAMS — Sistem Terpilih (dengan Web)</h2>
 <div class="diagram">
-<h3>02-SYSTEM-DIAGRAMS_1</h3>
-<div class="meta">DFD Level 0 — Context diagram &middot; 183.2 KB</div>
-<img src="02-SYSTEM-DIAGRAMS_1.png" alt="02-SYSTEM-DIAGRAMS_1">
+<h3>DAD Level 0 — Konteks (pelaku + sistem + saluran notifikasi)</h3>
+<div class="meta">02-SYSTEM-DIAGRAMS_1.png · 139.0 KB</div>
+<img src="02-SYSTEM-DIAGRAMS_1.png" alt="DAD Level 0 — Konteks (pelaku + sistem + saluran notifikasi)" loading="lazy">
 </div>
 <div class="diagram">
-<h3>02-SYSTEM-DIAGRAMS_2</h3>
-<div class="meta">DFD Level 1 — Decomposition (P1 Listener → P2 Engine → P3 Notif → P4 Report) &middot; 210.2 KB</div>
-<img src="02-SYSTEM-DIAGRAMS_2.png" alt="02-SYSTEM-DIAGRAMS_2">
+<h3>DAD Level 1 — Dekomposisi 4 proses utama</h3>
+<div class="meta">02-SYSTEM-DIAGRAMS_2.png · 212.3 KB</div>
+<img src="02-SYSTEM-DIAGRAMS_2.png" alt="DAD Level 1 — Dekomposisi 4 proses utama" loading="lazy">
 </div>
 <div class="diagram">
-<h3>02-SYSTEM-DIAGRAMS_3</h3>
-<div class="meta">Sequence — Scan absensi happy path &middot; 32.2 KB</div>
-<img src="02-SYSTEM-DIAGRAMS_3.png" alt="02-SYSTEM-DIAGRAMS_3">
+<h3>Sekuens — Pemindaian absensi (alur normal)</h3>
+<div class="meta">02-SYSTEM-DIAGRAMS_3.png · 147.7 KB</div>
+<img src="02-SYSTEM-DIAGRAMS_3.png" alt="Sekuens — Pemindaian absensi (alur normal)" loading="lazy">
 </div>
 <div class="diagram">
-<h3>02-SYSTEM-DIAGRAMS_4</h3>
-<div class="meta">Sequence — Device offline polling fallback &middot; 38.1 KB</div>
-<img src="02-SYSTEM-DIAGRAMS_4.png" alt="02-SYSTEM-DIAGRAMS_4">
+<h3>Sekuens — Mode polling saat perangkat luring</h3>
+<div class="meta">02-SYSTEM-DIAGRAMS_4.png · 134.8 KB</div>
+<img src="02-SYSTEM-DIAGRAMS_4.png" alt="Sekuens — Mode polling saat perangkat luring" loading="lazy">
 </div>
 <div class="diagram">
-<h3>02-SYSTEM-DIAGRAMS_5</h3>
-<div class="meta">Flowchart — Notification routing logic &middot; 151.6 KB</div>
-<img src="02-SYSTEM-DIAGRAMS_5.png" alt="02-SYSTEM-DIAGRAMS_5">
+<h3>Bagan alir — Logika pengaturan notifikasi</h3>
+<div class="meta">02-SYSTEM-DIAGRAMS_5.png · 134.0 KB</div>
+<img src="02-SYSTEM-DIAGRAMS_5.png" alt="Bagan alir — Logika pengaturan notifikasi" loading="lazy">
 </div>
 <div class="diagram">
-<h3>02-SYSTEM-DIAGRAMS_6</h3>
-<div class="meta">ERD — 9 entities + 7 relationships &middot; 254.1 KB</div>
-<img src="02-SYSTEM-DIAGRAMS_6.png" alt="02-SYSTEM-DIAGRAMS_6">
+<h3>ERD — 9 entitas inti + relasi</h3>
+<div class="meta">02-SYSTEM-DIAGRAMS_6.png · 235.0 KB</div>
+<img src="02-SYSTEM-DIAGRAMS_6.png" alt="ERD — 9 entitas inti + relasi" loading="lazy">
 </div>
-<h2>📡 03-NO-WEB-SOLUTION (Telegram + Sheets)</h2>
+<h2>📡 03-NO-WEB-SOLUTION — Tanpa Web (Telegram + Sheets)</h2>
 <div class="diagram">
-<h3>03-NO-WEB-SOLUTION_1</h3>
-<div class="meta">Arsitektur LR — 6 FP + Server + Telegram + Sheets &middot; 177.9 KB</div>
-<img src="03-NO-WEB-SOLUTION_1.png" alt="03-NO-WEB-SOLUTION_1">
-</div>
-<div class="diagram">
-<h3>03-NO-WEB-SOLUTION_2</h3>
-<div class="meta">DFD L0 simplified &middot; 75.8 KB</div>
-<img src="03-NO-WEB-SOLUTION_2.png" alt="03-NO-WEB-SOLUTION_2">
+<h3>Arsitektur sederhana: 6 FP → API → DB → Telegram + Sheets</h3>
+<div class="meta">03-NO-WEB-SOLUTION_1.png · 179.4 KB</div>
+<img src="03-NO-WEB-SOLUTION_1.png" alt="Arsitektur sederhana: 6 FP → API → DB → Telegram + Sheets" loading="lazy">
 </div>
 <div class="diagram">
-<h3>03-NO-WEB-SOLUTION_3</h3>
-<div class="meta">Sequence scan — simplified &middot; 18.7 KB</div>
-<img src="03-NO-WEB-SOLUTION_3.png" alt="03-NO-WEB-SOLUTION_3">
-</div>
-<h2>🎨 04-MULTI-CONCEPT-7-SCHEMAS (7 spektrum)</h2>
-<div class="diagram">
-<h3>04-MULTI-CONCEPT-7-SCHEMAS_1</h3>
-<div class="meta">Konsep 1: Ultra-Mini (WA Baileys) &middot; 57.0 KB</div>
-<img src="04-MULTI-CONCEPT-7-SCHEMAS_1.png" alt="04-MULTI-CONCEPT-7-SCHEMAS_1">
+<h3>DAD Level 0 sederhana (tanpa web)</h3>
+<div class="meta">03-NO-WEB-SOLUTION_2.png · 74.7 KB</div>
+<img src="03-NO-WEB-SOLUTION_2.png" alt="DAD Level 0 sederhana (tanpa web)" loading="lazy">
 </div>
 <div class="diagram">
-<h3>04-MULTI-CONCEPT-7-SCHEMAS_2</h3>
-<div class="meta">Konsep 2: Mini Telegram (no web) &middot; 79.6 KB</div>
-<img src="04-MULTI-CONCEPT-7-SCHEMAS_2.png" alt="04-MULTI-CONCEPT-7-SCHEMAS_2">
+<h3>Sekuens scan + sinkron Sheets</h3>
+<div class="meta">03-NO-WEB-SOLUTION_3.png · 126.2 KB</div>
+<img src="03-NO-WEB-SOLUTION_3.png" alt="Sekuens scan + sinkron Sheets" loading="lazy">
+</div>
+<h2>🎨 04-MULTI-CONCEPT-4-SCHEMAS — 4 Konsep (masing-masing lengkap)</h2>
+<div class="diagram">
+<h3>Konsep 1 — DAD L0: Minimalis WhatsApp</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_1.png · 69.0 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_1.png" alt="Konsep 1 — DAD L0: Minimalis WhatsApp" loading="lazy">
 </div>
 <div class="diagram">
-<h3>04-MULTI-CONCEPT-7-SCHEMAS_3</h3>
-<div class="meta">Konsep 3: Lite Web + Telegram &middot; 102.4 KB</div>
-<img src="04-MULTI-CONCEPT-7-SCHEMAS_3.png" alt="04-MULTI-CONCEPT-7-SCHEMAS_3">
+<h3>Konsep 1 — DAD L1: Dekomposisi 4 proses</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_2.png · 139.2 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_2.png" alt="Konsep 1 — DAD L1: Dekomposisi 4 proses" loading="lazy">
 </div>
 <div class="diagram">
-<h3>04-MULTI-CONCEPT-7-SCHEMAS_4</h3>
-<div class="meta">Konsep 4: Standard Web+FCM+WA &middot; 163.1 KB</div>
-<img src="04-MULTI-CONCEPT-7-SCHEMAS_4.png" alt="04-MULTI-CONCEPT-7-SCHEMAS_4">
+<h3>Konsep 1 — Sekuens: pemindaian + perintah admin</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_3.png · 144.5 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_3.png" alt="Konsep 1 — Sekuens: pemindaian + perintah admin" loading="lazy">
 </div>
 <div class="diagram">
-<h3>04-MULTI-CONCEPT-7-SCHEMAS_5</h3>
-<div class="meta">Konsep 5: Pro Multi-Sekolah &middot; 173.0 KB</div>
-<img src="04-MULTI-CONCEPT-7-SCHEMAS_5.png" alt="04-MULTI-CONCEPT-7-SCHEMAS_5">
+<h3>Konsep 1 — ERD versi sederhana</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_4.png · 91.3 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_4.png" alt="Konsep 1 — ERD versi sederhana" loading="lazy">
 </div>
 <div class="diagram">
-<h3>04-MULTI-CONCEPT-7-SCHEMAS_6</h3>
-<div class="meta">Konsep 6: Enterprise + AI &middot; 252.5 KB</div>
-<img src="04-MULTI-CONCEPT-7-SCHEMAS_6.png" alt="04-MULTI-CONCEPT-7-SCHEMAS_6">
+<h3>Konsep 2 — DAD L0: Minimalis Telegram</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_5.png · 79.7 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_5.png" alt="Konsep 2 — DAD L0: Minimalis Telegram" loading="lazy">
 </div>
 <div class="diagram">
-<h3>04-MULTI-CONCEPT-7-SCHEMAS_7</h3>
-<div class="meta">Konsep 7: Premium Smart-School &middot; 257.1 KB</div>
-<img src="04-MULTI-CONCEPT-7-SCHEMAS_7.png" alt="04-MULTI-CONCEPT-7-SCHEMAS_7">
-</div>
-<h2>🌐 SERVER_NETWORK_DEPLOYMENT (3 skenario server)</h2>
-<div class="diagram">
-<h3>SERVER_NETWORK_DEPLOYMENT_1</h3>
-<div class="meta">Skenario A: Offline-Only (lokal NAT) &middot; 80.2 KB</div>
-<img src="SERVER_NETWORK_DEPLOYMENT_1.png" alt="SERVER_NETWORK_DEPLOYMENT_1">
+<h3>Konsep 2 — DAD L1: 5 proses + sinkron Sheets</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_6.png · 160.9 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_6.png" alt="Konsep 2 — DAD L1: 5 proses + sinkron Sheets" loading="lazy">
 </div>
 <div class="diagram">
-<h3>SERVER_NETWORK_DEPLOYMENT_2</h3>
-<div class="meta">Skenario B: Hybrid + Cloudflare Tunnel Zero Trust &middot; 118.6 KB</div>
-<img src="SERVER_NETWORK_DEPLOYMENT_2.png" alt="SERVER_NETWORK_DEPLOYMENT_2">
+<h3>Konsep 2 — Sekuens: scan + sinkron rekap</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_7.png · 127.0 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_7.png" alt="Konsep 2 — Sekuens: scan + sinkron rekap" loading="lazy">
 </div>
 <div class="diagram">
-<h3>SERVER_NETWORK_DEPLOYMENT_3</h3>
-<div class="meta">Skenario C: Cloud-Native (VPS + IP public) &middot; 185.7 KB</div>
-<img src="SERVER_NETWORK_DEPLOYMENT_3.png" alt="SERVER_NETWORK_DEPLOYMENT_3">
+<h3>Konsep 2 — ERD versi standar</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_8.png · 202.2 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_8.png" alt="Konsep 2 — ERD versi standar" loading="lazy">
 </div>
 <div class="diagram">
-<h3>SERVER_NETWORK_DEPLOYMENT_4</h3>
-<div class="meta">Flowchart pemilihan skenario &middot; 87.5 KB</div>
-<img src="SERVER_NETWORK_DEPLOYMENT_4.png" alt="SERVER_NETWORK_DEPLOYMENT_4">
+<h3>Konsep 3 — DAD L0: Ringan Web + Telegram</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_9.png · 106.3 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_9.png" alt="Konsep 3 — DAD L0: Ringan Web + Telegram" loading="lazy">
 </div>
+<div class="diagram">
+<h3>Konsep 3 — DAD L1: 5 proses + API web</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_10.png · 162.7 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_10.png" alt="Konsep 3 — DAD L1: 5 proses + API web" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Konsep 3 — Sekuens: scan + akses web</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_11.png · 165.6 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_11.png" alt="Konsep 3 — Sekuens: scan + akses web" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Konsep 3 — ERD dengan modul web</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_12.png · 221.2 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_12.png" alt="Konsep 3 — ERD dengan modul web" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Konsep 4 — DAD L0: Standar multi-saluran</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_13.png · 170.0 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_13.png" alt="Konsep 4 — DAD L0: Standar multi-saluran" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Konsep 4 — DAD L1: 6 proses + notifikasi hibrida</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_14.png · 208.8 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_14.png" alt="Konsep 4 — DAD L1: 6 proses + notifikasi hibrida" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Konsep 4 — Sekuens: scan + notifikasi hibrida</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_15.png · 165.7 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_15.png" alt="Konsep 4 — Sekuens: scan + notifikasi hibrida" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Konsep 4 — ERD lengkap dengan notifikasi</h3>
+<div class="meta">04-MULTI-CONCEPT-4-SCHEMAS_16.png · 306.5 KB</div>
+<img src="04-MULTI-CONCEPT-4-SCHEMAS_16.png" alt="Konsep 4 — ERD lengkap dengan notifikasi" loading="lazy">
+</div>
+<h2>🌐 SERVER_NETWORK_DEPLOYMENT — 3 Skenario Server</h2>
+<div class="diagram">
+<h3>Skenario A: Offline-Only (lokal NAT, tanpa IP publik)</h3>
+<div class="meta">SERVER_NETWORK_DEPLOYMENT_1.png · 79.7 KB</div>
+<img src="SERVER_NETWORK_DEPLOYMENT_1.png" alt="Skenario A: Offline-Only (lokal NAT, tanpa IP publik)" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Skenario B: Hybrid + Cloudflare Tunnel Zero Trust</h3>
+<div class="meta">SERVER_NETWORK_DEPLOYMENT_2.png · 118.5 KB</div>
+<img src="SERVER_NETWORK_DEPLOYMENT_2.png" alt="Skenario B: Hybrid + Cloudflare Tunnel Zero Trust" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Skenario C: Cloud-Native (VPS + IP publik)</h3>
+<div class="meta">SERVER_NETWORK_DEPLOYMENT_3.png · 186.7 KB</div>
+<img src="SERVER_NETWORK_DEPLOYMENT_3.png" alt="Skenario C: Cloud-Native (VPS + IP publik)" loading="lazy">
+</div>
+<div class="diagram">
+<h3>Bagan alir pemilihan skenario</h3>
+<div class="meta">SERVER_NETWORK_DEPLOYMENT_4.png · 87.4 KB</div>
+<img src="SERVER_NETWORK_DEPLOYMENT_4.png" alt="Bagan alir pemilihan skenario" loading="lazy">
+</div>
+<footer>Dibuat otomatis dari blok <code>mermaid</code> di dokumen vault. Sumber: 02, 03, 04 (20-Projects/01-absensi-finger) + SERVER_NETWORK_DEPLOYMENT (60-Blueprints).</footer>
 </body></html>
