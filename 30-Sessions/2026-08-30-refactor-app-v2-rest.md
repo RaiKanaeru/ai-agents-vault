@@ -154,3 +154,13 @@ Kesalahan baru didokumentasi: `40-Refactor/KESALAHAN-3.md` (import globals mixin
 - Migrasi BE Python→Go (+Redis): **DEFERRED** oleh user — masuk backlog. Evaluasi ulang pakai data runtime 1-3 bulan (prinsip: stabilize incremental > rewrite besar).
 - Prioritas baru: **EXE mobile** (framework belum ditetapkan — didiskusikan).
 - Pending list: [1] EXE mobile (AKTIF) · [2] kick test 2 instance · [3] pensiunkan API lama gtp-logistik-api (48h hanya health-check, nol client) · [4] verifikasi visual layout EXE v2.5.0 · [5] migrasi Go (DEFERRED)
+
+## Rapihkan Push Device 2 (2026-08-30 siang)
+
+- mametbatu03-code push 3 commit ke `feature/distribusi-gtp-v2.4.6-update`.
+- DITERIMA: `5debeac` (backup 4x/hari + migrasi tools) → cherry-pick `3ef0d9a`.
+- HOLD: `09b1025`+`e29c2ca` (dashboard direct-DB dari client — password DB hardcode baris 409, bypass 1-device-1-akun, salah file monolith lama).
+- **Bocor ketemu**: `vps_config.json` (pass DB asli) tracked sejak commit awal → dicabut (untracked+gitignore) `f4b4c56`. admin123/kredensial tes hardcode di wizard migrasi → dikosongkan, skip-if-empty.
+- Server: endpoint baru `POST /api/gudang/dashboard-summary` (status_counts + total_unit + live_feed 15) — deploy + test live OK (READY 1357 unit).
+- Catatan buat mamet: `CATATAN_REVIEW_PUSH_2026-08-30.md` di repo, push `640b7c1`.
+- Peta sistem final: EXE desktop → API v2 (`/api/gudang/*`), APK gtp_scanner (Flutter v2.3.11+241) → API LAMA (`/api/*`, 20+ endpoint). API lama TIDAK BOLEH dipensiunkan.
