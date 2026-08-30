@@ -164,3 +164,12 @@ Kesalahan baru didokumentasi: `40-Refactor/KESALAHAN-3.md` (import globals mixin
 - Server: endpoint baru `POST /api/gudang/dashboard-summary` (status_counts + total_unit + live_feed 15) — deploy + test live OK (READY 1357 unit).
 - Catatan buat mamet: `CATATAN_REVIEW_PUSH_2026-08-30.md` di repo, push `640b7c1`.
 - Peta sistem final: EXE desktop → API v2 (`/api/gudang/*`), APK gtp_scanner (Flutter v2.3.11+241) → API LAMA (`/api/*`, 20+ endpoint). API lama TIDAK BOLEH dipensiunkan.
+
+## Merge Device-2 + Pembersihan Password Total (2026-08-30 siang)
+
+- mamet push lg: `20e89b8` (circuit breaker) + `1c4581d` (REST-API-First) — respon ke catatan review. REST-first ✅, tapi fallback direct-DB (38 call-site) + pass hardcode masih ada.
+- Keputusan user: satukan. Cabang `pembersihan-device-2` dari feature → bersihin → merge `--no-ff` ke main (`d92931d`).
+- **Pembersihan password massal**: 38 file .py dibersihin dari `GTP_Prodigi2026!` (env-var `GTP_DB_PASS` / vps_config.json tetap didukung). Yg sengaja dibiarkan: `admin_key` endpoint admin server (dipakai EXE lapangan — rotate terpisah bareng rotate pass DB).
+- Konflik merge MIGRASI_SERVER_1KLIK.py → resolusi: versi bersih main. Subfolder 04_ ikut disamain.
+- Verify server: GTP_DB_PASS ter-set di container gtp-logistik-api-v2 → patch default-kosong aman utk deploy berikutnya. API 200 normal.
+- Sisa tugas arsitektur: perubahan menu mamet masih di monolith `Distribusi GTP.py`, belum dipindah ke `code_refactor/` (source build resmi). Bahan diskusi build EXE berikutnya.
