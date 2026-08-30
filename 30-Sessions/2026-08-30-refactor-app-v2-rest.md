@@ -135,3 +135,17 @@ Kesalahan baru didokumentasi: `40-Refactor/KESALAHAN-3.md` (import globals mixin
 - Source code: `D:\CODING-2026\Inventaris_GTP\app_v2_rest.py` (active), `02_SOURCE/app.py` (checkpoint)
 - Repo GitHub: `https://github.com/RaiKanaeru/Inventaris_GTP` (private)
 - Produk: exe desktop + APK mobile, ZERO website. BE final: Go+Redis+PostgreSQL (Q1 2027)
+
+## Fase 4 — Security Deploy + Audit Layout (2026-08-30 pagi)
+
+- Security fix deployed: bridge-login rotate session_token_warehouse; client switch endpoint + hapus backdoor. 5/5 API test PASS. EXE v2.5.0 rebuilt.
+- **Audit layout UI/UX** (user: "fitur layout kok berubah?"):
+  - Bedah PYZ 2 EXE (pyinstxtractor-ng): EXE harian 69.3MB = dibangun dari app_v2_rest.py juga (bukan app.py!)
+  - __init__ AST verbatim, 189/189 function identik, login screen pixel-identik, theme/DPI sama
+  - 127 string beda → 125 docstring re-indent, 2 = pool dual-topology legacy (dead code)
+  - **Kesimpulan: layout TIDAK berubah** — yang kerasa beda = watchdog kick (sesi test PC-TEST-2) + splash 3s
+- Debug log: 403 alter startup = harmless (5 kolom PIC sudah ada); "main thread not in main loop" ×3 = pre-existing (EXE lama ×34)
+- Cleanup: debris forensik dihapus, _check_repo_size.py direstore, .gitignore +runtime artifacts/scratch/xlsm
+- Git: Inventaris_GTP push `318ecda` (43 file, TANPA force-push — blocked lama ternyata moot); vault checkpoint app.py `02dba79`
+- File sampah ketemu & dihapus: `mamet-server@192.168.2.254's ssh scp` (205KB, hasil scp salah argumen)
+- Item terbuka: kick test 2 instance GUI (butuh user), verifikasi visual user

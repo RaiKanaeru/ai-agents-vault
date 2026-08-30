@@ -23,6 +23,22 @@ version: 0.2.0-in-progress
 - Spec baru `app_v2_refactor.spec` (entry `code_refactor/main.py`)
 - Checkpoint dekat: `code_refactor/app_v2_rest.py.bak` (590KB)
 
+## v0.2.1 (2026-08-30) — Security + Audit UI/UX
+
+### Fixed
+- **1-device-per-account ENFORCED server-side**: `bridge-login` rotate `session_token_warehouse` + `device_info_warehouse`
+- Login kedua → device pertama kena force-logout (watchdog 15s client)
+- Hardcoded creds (`admin123/mametfebian/jamet123/gtp123`) + fallback direct-DB DIHAPUS dari client
+- 5/5 API test PASS; EXE rebuilt v2.5.0 post-security
+
+### Verified (Audit Layout UI/UX — laporan user "layout berubah")
+- `__init__` refactor vs source: **AST identik** (13.956 chars verbatim)
+- Theme/DPI: `Light`+`blue`+`SetProcessDpiAwareness(1)` sama di kedua EXE
+- Function names EXE lama vs source: **189/189 identik**
+- Login screen kedua EXE: **pixel-identik**
+- Entry-code string: 93.1% sama; 125/127 selisih = re-indent docstring; 2 fungsional = pool dual-topology legacy (dead code, psycopg2 disabled)
+- **Kesimpulan: refactor tidak mengubah layout/fitur UI/UX**
+
 ### Changed
 - `ambil_koneksi_db()`: 30 baris psycopg2.connect → 5 baris return `_RestConn`
 - Source of truth: root `app.py` (173K, salah) → `app_v2_rest.py` (10540 baris)
