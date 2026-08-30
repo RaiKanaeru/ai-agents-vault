@@ -100,6 +100,28 @@ User request:
 
 Kesalahan baru didokumentasi: `40-Refactor/KESALAHAN-3.md` (import globals mixin, duplikat MRO, bare call, lazy psycopg2).
 
+## Fase 3 — Security Fix: Single-Session Desktop (08:20 WIB)
+
+**Root cause (systematic-debugging 4 fase):**
+1. Client login ke `/api/login` → server tulis token ke `session_token_mobile` (bukan warehouse)
+2. Watchdog desktop baca `session_token_warehouse` → selalu `'-'` → kick GAK PERNAH nyala
+3. Server zero kode yang nulis kolom warehouse → 1-device-per-akun desktop mati total
+4. Fallback direct-DB + hardcoded creds (`admin123/mametfebian/jamet123/gtp123` di EXE) = backdoor bypass session
+
+**Fix server** (`main_api.py` `/api/gudang/bridge-login`):
+- Login sukses → generate uuid + UPDATE `session_token_warehouse`, `device_info_warehouse`, `last_login_warehouse`
+- Return `{valid, role, token, session_token, device_info}`
+
+**Fix client** (`code_refactor/ui/login_sessions.py`):
+- Switch `/api/login` → `/api/gudang/bridge-login`, loop 2 URL (cloud → fallback `http://192.168.30.100:1888`)
+- Simpan `self._admin_token_rest` dari response (fix 403 db-exec WRITE)
+- HAPUS fallback direct-DB login + semua hardcoded creds (backdoor)
+- Watchdog 15s + `_tangani_force_logout_sesi` TIDAK diubah — sekarang berfungsi
+
+**Verifikasi (server live):** LOGIN1 tok a4fd845c → LOGIN2 tok 58403939 (rotate) → verify token lama = `session_replaced` + device PC-TEST-2 → verify token baru = valid → wrong pass = ditolak. **5/5 PASS.**
+
+**Build EXE** ulang 08:19 (hambatan: EXE lama running = PermissionError; fix via Stop-Process). Smoke: ALIVE, log 403 'alter' harmless (client init coba ALTER, server tolak, kolom sudah dibuat server-side).
+
 ## Server Status
 
 - v2 API: healthy, gunicorn 4w×2t, Redis cache + rate limit
