@@ -149,3 +149,8 @@ Kesalahan baru didokumentasi: `40-Refactor/KESALAHAN-3.md` (import globals mixin
 - Git: Inventaris_GTP push `318ecda` (43 file, TANPA force-push — blocked lama ternyata moot); vault checkpoint app.py `02dba79`
 - File sampah ketemu & dihapus: `mamet-server@192.168.2.254's ssh scp` (205KB, hasil scp salah argumen)
 - Item terbuka: kick test 2 instance GUI (butuh user), verifikasi visual user
+
+## Keputusan Prioritas (2026-08-30 siang)
+- Migrasi BE Python→Go (+Redis): **DEFERRED** oleh user — masuk backlog. Evaluasi ulang pakai data runtime 1-3 bulan (prinsip: stabilize incremental > rewrite besar).
+- Prioritas baru: **EXE mobile** (framework belum ditetapkan — didiskusikan).
+- Pending list: [1] EXE mobile (AKTIF) · [2] kick test 2 instance · [3] pensiunkan API lama gtp-logistik-api (48h hanya health-check, nol client) · [4] verifikasi visual layout EXE v2.5.0 · [5] migrasi Go (DEFERRED)
