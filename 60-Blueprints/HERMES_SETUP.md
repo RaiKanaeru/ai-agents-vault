@@ -45,7 +45,15 @@ hermes config set reasoning on
 hermes config set personality terse
 ```
 
-### 4. Add MCP servers (kalau ada budget)
+### 4. MCP Servers Aktif
+- `uteke` (vector memory & knowledge graph)
+- `21st` (UI marketplace)
+- `motion` (CSS animations)
+- `context7` (realtime docs)
+- `canva` (design media)
+- `obsidian` (filesystem access ke `D:\Obsidian\AI-Agents` - 14 tools)
+
+Optional tambahan:
 ```bash
 hermes mcp install github    # untuk issue/PR lewat chat
 hermes mcp install sentry   # untuk error tracking
