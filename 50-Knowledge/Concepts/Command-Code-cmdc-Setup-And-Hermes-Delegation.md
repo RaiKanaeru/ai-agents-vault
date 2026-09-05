@@ -68,3 +68,17 @@ Status di Hermes:
 │ command-code         │ autonomous-ai-agen… │ local │ local │ enabled │
 ```
 Hermes dapat mendelegasikan tugas coding dan refactoring berat ke `cmdc` melalui tool terminal `terminal(command="cmdc -p '...' --skip-onboarding")`.
+
+## MCP Servers di Command Code (`~/.commandcode/mcp.json`)
+Command Code dikonfigurasi dengan 10 server MCP global (`scope: user`):
+1. **`obsidian`** (stdio): File access ke vault `D:\Obsidian\AI-Agents`
+2. **`uteke`** (stdio): Persistent vector memory & knowledge graph lokal
+3. **`context7`** (http): Dokumentasi library & framework real-time
+4. **`motion`** (http): CSS easing & motion
+5. **`21st`** (http): Marketplace komponen UI modern
+6. **`sequential-thinking`** (stdio): Structured chain-of-thought analysis
+7. **`fetch`** (stdio): Clean web content extraction
+8. **`time`** (stdio): Waktu lokal Asia/Jakarta
+9. **`chrome-devtools`** (stdio): Browser inspection & automation
+10. **`canva`** (http): Asset & media design
+
