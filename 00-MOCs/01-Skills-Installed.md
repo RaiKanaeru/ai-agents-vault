@@ -165,6 +165,7 @@ hermes skills check                # check for updates
 - `node-inspect-debugger` → Node.js debug
 - `tidyfiles` → sort/organize files
 - `blackbox` → delegate multi-model
+- `find-skills` → cari & pasang skill ekosistem open-agent (skills.sh)
 
 ### Research & write
 - `researcher` (agent profile)
