@@ -4,7 +4,7 @@
 - **Operating System**: Windows 10
 - **Drive / Vault Location**: `D:\Obsidian\AI-Agents` (active) · `C:\Users\raiha\Documents\Obsidian Vault` (secondary, mature)
 - **Git:** `gh` CLI logged in as `RaiKanaeru` ✓
-- **Primary AI Pairing**: Hermes Agent (model `vibe` via OmniRoute), Antigravity IDE, Claude Code, Codex, OpenCode
+- **Primary AI Pairing**: Hermes Agent (model `vibe` via OmniRoute), Antigravity IDE, Claude Code, Codex, OpenCode, Command Code (`cmdc`)
 - **Projects**: Fleet diagnostics, custom ISO deployment, inventory systems, fullstack and hardware utilities, absensi fingerprint (current focus)
 
 ## Preferences & Guidelines

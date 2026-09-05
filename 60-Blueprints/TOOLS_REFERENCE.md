@@ -1,400 +1,145 @@
 ---
 type: blueprint
-tags: [blueprint, tools, hermes, reference]
-updated: 2026-08-28
+tags: [blueprint, tools, reference, ai, devops, architecture]
+updated: 2026-09-05
 ---
 
-# Blueprint: Hermes Tools Reference
+# Blueprint: Developer & AI Engineering Tools Reference
 
-> **Complete reference of Hermes CLI subcommands & toolsets.** Generated from `hermes --help` + `hermes tools list`. Use this as the canonical index — `hermes --help` is source of truth, but this is searchable & annotated for vibe coding.
-
-## How to Use This Doc
-1. **Find tool by category** (below)
-2. **Run `hermes <tool> --help`** for full flag reference
-3. **Run `hermes <tool>`** with no args for interactive picker
-4. **Note:** `hermes --help` is the source of truth — re-run if uncertain
+> **Comprehensive engineering & AI tools reference.** Indeks praktis lintas toolchain untuk coding agents, edge vision, self-hosting, arsitektur sistem, UI/UX inspiration, dan CLI power tools (tidak lagi terpusat hanya pada Hermes).
 
 ---
 
-## 🎯 Core Commands (Daily Use)
+## 1. 🤖 AI Coding Agents & Pair Programming
 
-| Command | What | When |
-|---------|------|------|
-| `hermes` | Start interactive chat | Default entry |
-| `hermes --tui` | Launch modern TUI | Better than REPL |
-| `hermes --cli` | Force classic REPL | If TUI buggy |
-| `hermes chat -q "..."` | Single query, exit | Scripting, cron |
-| `hermes -c` | Resume latest session | Continue work |
-| `hermes --resume <id>` | Resume specific session | Replay exact state |
-| `hermes setup` | Run setup wizard | First-time / re-onboard |
-| `hermes model` | Pick default model | Switch LLM |
-| `hermes status` | Show auth/model status | Verify ready state |
-| `hermes doctor` | Diagnose issues | When broken |
-| `hermes update` | Self-update | New version |
-| `hermes verify` | Verify install | After update |
-| `hermes logs` | View logs | Debug crash |
-| `hermes prompt-size` | Show token usage | Optimize context |
+| Tool / Agent | Kekuatan Utama | Best For | Mode / Interface |
+|---|---|---|---|
+| **Antigravity IDE** | Planning mode, subagent delegation, visual artifacts, deep codebase reasoning, multi-turn stateful edits | Arsitektur besar, refactoring multi-file, planning & verification | GUI IDE + Chat + Artifacts |
+| **Hermes Agent** | Terminal-centric, ultra-fast turnarounds, skill ecosystem luas, model routing via OmniRoute (`vibe`) | Vibe coding cepat di shell, interactive TUI, quick feature spikes | CLI (`hermes --tui`) |
+| **Claude Code** | Deep context reasoning, review PR panjang, multi-step debugging terminal | Deep code review, complex architectural auditing | CLI (`claude-code` skill) |
+| **Codex / OpenCode** | Fast autonomous code execution, test generator, scaffolding cepat | Boilerplate, batch test generation, repo exploration | CLI (`codex`, `opencode`) |
+| **Aider** | Git-integrated pair programming, automatic diff commits, repository map | In-repo iterative code changes dengan clean commit history | CLI |
 
 ---
 
-## 🧠 Model & Provider
+## 2. 👁️ Edge AI, Computer Vision & Spatial Simulation
 
-| Command | What |
-|---------|------|
-| `hermes model` | Pick default model (interactive picker) |
-| `hermes moa` | Mixture-of-Agents: chain multiple models |
-| `hermes fallback` | Manage fallback provider chain |
-| `hermes auth add` | Pooled credentials (multi-account) |
-| `hermes auth list` | List pooled creds |
-| `hermes auth remove` | Remove by index/id/label |
-| `hermes auth reset` | Clear exhaustion (rate-limit cooldown) |
-| `hermes migrate` | Migrate from other agent tools (Aider, Claude, etc) |
-| `hermes logout` | Clear stored auth |
+| Tool | Kategori & Stack | Fungsi Utama | Kapan Dipakai |
+|---|---|---|---|
+| **[mudler/locate-anything.cpp](https://github.com/mudler/locate-anything.cpp)** | C++17 / `ggml` inference | Open-vocabulary object detection (NVIDIA LocateAnything-3B) tanpa runtime Python | Edge inference, telemetry fleet/hardware, deteksi objek via teks bebas di CPU/GPU |
+| **[duy-phamduc68/TrafficLab-3D](https://github.com/duy-phamduc68/TrafficLab-3D)** | Python / YOLO / 3D Projection | Digital twin traffic visualization dari CCTV MP4 + Google Maps satelit (3D floor boxes, heading, speed) | Analisis video kendaraan, telemetri parkir/jalan, spatial tracking |
+| **[LocalAI](https://github.com/mudler/LocalAI) / [llama.cpp](https://github.com/ggerganov/llama.cpp)** | C++ native inference | Self-hosted multi-modal model server (LLM, vision, audio) kompatibel OpenAI API | Menjalankan model lokal tanpa cloud API, privacy-first edge setups |
 
-**Tip:** Set fallback chain so when primary hits rate limit, auto-pivot.
+---
+
+## 3. 🧠 LLM Orchestration, RAG & Agent Memory
+
+| Tool | Jenis | Kegunaan | Integrasi |
+|---|---|---|---|
+| **[langgenius/dify](https://github.com/langgenius/dify)** | Visual LLM Platform | Drag-and-drop prompt IDE, RAG retrieval engine, multi-agent workflow, API gateway | Web UI / Docker / REST API |
+| **[LiteLLM](https://github.com/BerriAI/litellm)** | Proxy / Router | Unified proxy untuk 100+ LLM APIs dengan rate-limiting, load balancing, & cost tracking | Proxy service (OpenAI format) |
+| **Uteke + Obsidian Vault** | Durable Memory | Knowledge graph, episodic memory, persistent scratchpad untuk agent | MCP server / local markdown vault |
+
+---
+
+## 4. 🚀 DevOps, PaaS & Self-Hosting
+
+| Tool | Kategori | Keunggulan | Rekomendasi Target |
+|---|---|---|---|
+| **[oblien/openship](https://github.com/oblien/openship)** | Self-Hosted PaaS | Alternatif Vercel/Netlify di VPS $5: zero-config tech detection (Node/Go/Python/Rust/Docker), auto SSL, CI/CD, DB provisioner | Dashboard internal, microservices, landing pages klien |
+| **[Coolify](https://coolify.io)** | Production PaaS | Fitur lengkap untuk Docker Compose, database clusters, preview deployments | Fullstack apps dengan cluster server mandiri |
+| **Docker Compose v2** | Container Engine | Multi-service local orchestrator, volume binding, healthcheck automation | Local dev environment, isolated microservices |
+
+---
+
+## 5. 📐 System Design, Architecture & Diagramming
+
+| Tool / Resource | Fokus | Nilai Tambah |
+|---|---|---|
+| **[ByteByteGoHq/system-design-101](https://github.com/ByteByteGoHq/system-design-101)** | Visual Architecture Cheatsheet | Diagram presisi untuk sistem skala besar (caching strategies, consensus, message queues, database indexing, API gateways) |
+| **[DayuanJiang/next-ai-draw-io](https://github.com/DayuanJiang/next-ai-draw-io)** | AI Diagramming Canvas | Draw.io dengan natural language generator, image/whiteboard-to-vector, cloud icons. *(Perhatian: gunakan rilis patched untuk mitigasi CVE-2026-50756/50757)* |
+| **Mermaid.js / Excalidraw** | Diagram-as-Code & Freehand | Format diagram native untuk file markdown Obsidian dan sketsa arsitektur cepat |
+
+---
+
+## 6. 🎨 UI/UX Design Inspiration & Frontend Taste
+
+*(Gunakan bersama skill: `impeccable`, `ui-ux-pro-max`, `design-taste-frontend`, atau `21st-cli-use`)*
+
+| Resource | Fokus Kurasi | Kapan Dibuka |
+|---|---|---|
+| **[supahero.io](https://supahero.io/)** | Hero Section Gallery | Mencari inspirasi visual layout headline, value prop, CTA, dan visual hook landing page |
+| **[saaspo.com](https://saaspo.com/)** | SaaS Real-World Pages | Mencari referensi riil untuk pricing table, authentication modal, settings, dan app dashboard |
+| **[seesaw.website](https://www.seesaw.website/)** | Award-Winning Creative Web | Benchmarking micro-interactions, editorial typography, motion craft, dan aesthetic non-bland |
+| **[21st.dev](https://21st.dev/)** | Copy-paste UI Components | Mencari komponen React/shadcn/Tailwind siap pakai dengan CLI (`npx 21st@latest add ...`) |
+
+---
+
+## 7. ⚡ Developer CLI Power Tools (Windows / Cross-Platform)
+
+| Command / Tool | Deskripsi | Shortcut / Pola Penting |
+|---|---|---|
+| `gh` | GitHub Official CLI | `gh pr create --fill`, `gh run watch`, `gh issue list` |
+| `ast-grep` (`sg`) | Structural AST search/replace | `sg -p '$A.map($B)' -l ts` (refactoring presisi tanpa regex hallo) |
+| `ripgrep` (`rg`) | Fast text/code search | `rg "pattern" -g "*.ts"` (super cepat, mengabaikan `.gitignore`) |
+| `fd` | Fast file finder | `fd -e py -x ...` (pengganti `find` yang intuitif) |
+| `jq` | JSON processor CLI | `cat data.json \| jq '.results[] \| {id, name}'` |
+| `bru` (Bruno CLI) | Headless API Testing | Testing endpoint REST/GraphQL offline tanpa lock-in Postman |
+
+---
+
+## 8. 🧰 Hermes Agent CLI Quick Cheatsheet
+
+> **Catatan:** Dokumen manual lengkap 100% tanpa potongan untuk seluruh flag, command, dan 24 toolsets Hermes tersimpan di **[[60-Blueprints/HERMES_COMMANDS]]**. Berikut adalah ringkasan padat command esensial harian:
+
+### Core Commands
 ```bash
-hermes fallback add --provider openrouter --model gpt-4o-mini
-hermes fallback add --provider anthropic --model claude-haiku
+hermes                  # Interactive chat default
+hermes --tui            # Modern terminal UI (rekomendasi harian)
+hermes -c               # Resume session terakhir
+hermes model            # Ganti default LLM (interactive picker)
+hermes doctor           # Self-diagnostics jika ada error
 ```
 
----
-
-## ⚙️ Config
-
-| Command | What |
-|---------|------|
-| `hermes config` | View current config |
-| `hermes config show` | Full YAML dump |
-| `hermes config get <key>` | Read value (supports dot-path: `model.default`) |
-| `hermes config set <key> <val>` | Set value |
-| `hermes config unset <key>` | Remove |
-| `hermes config edit` | Open YAML in `$EDITOR` |
-| `hermes config check` | Check missing/outdated keys |
-| `hermes config migrate` | Update config to new schema |
-| `hermes config path` | Print config file path |
-| `hermes config env-path` | Print .env file path |
-
-**Common knobs:**
+### Skills Management
 ```bash
-hermes config set max_turns 80
-hermes config set reasoning on
-hermes config set personality terse
-hermes config set display.interface tui
-hermes config set terminal.backend local
-hermes config set terminal.timeout 300
+hermes skills list              # Cek skill yang terpasang
+hermes skills search "<query>"  # Cari skill di hub
+hermes skills install <id>      # Pasang skill baru
+hermes skills audit             # Security check skill
 ```
 
----
-
-## 🔐 Security & Approvals
-
-| Command | What |
-|---------|------|
-| `hermes security` | Security settings |
-| `hermes approvals` | Tool approval policy (yolo / safe / interactive) |
-| `hermes egress` | Egress firewall (block outbound URLs) |
-| `hermes secrets` | Secrets manager (don't put in vault) |
-| `hermes egress` | Egress firewall |
-| `hermes firewall` | (alias / related) |
-
-**Setup rule:** use `--safe-mode` for new repos until you trust the workflow.
-
----
-
-## 🛠️ Skills (THE most important for vibe coding)
-
-| Command | What |
-|---------|------|
-| `hermes skills list` | Show installed skills (use this!) |
-| `hermes skills browse` | Browse hub catalog (paginated) |
-| `hermes skills search <q>` | Search by keyword (`coding`, `debug`, `prd`, `obsidian`, `memory`) |
-| `hermes skills inspect <id>` | Preview without installing |
-| `hermes skills install <id>` | Install from hub |
-| `hermes skills uninstall` | Remove |
-| `hermes skills update` | Check & install updates |
-| `hermes skills check` | Check for updates (dry) |
-| `hermes skills audit` | Security audit of installed |
-| `hermes skills trust <path>` | Trust a repo's local skills (`./.hermes/skills`) |
-| `hermes skills untrust` | Revoke trust |
-| `hermes skills config` | Skill-specific config |
-| `hermes skills snapshot` | Snapshot current state |
-| `hermes skills diff` | Diff installed vs snapshot |
-| `hermes skills publish` | Publish your own to hub |
-| `hermes skills tap` | Add custom registry source |
-
-**Sources:** skills.sh, clawhub, GitHub (community), plus local (`./.hermes/skills`).
-
-**Workflow for new skill:**
+### Toolsets & Workspaces
 ```bash
-hermes skills search "vibe coding"
-hermes skills inspect skills-sh/refoundai/lenny-skills/vibe-coding
-hermes skills install <id>
-hermes skills list   # verify
-```
-
----
-
-## 🧩 MCP (Model Context Protocol)
-
-| Command | What |
-|---------|------|
-| `hermes mcp list` | Show configured MCP servers |
-| `hermes mcp install <catalog>` | Add from catalog (interactive) |
-| `hermes mcp login <server>` | OAuth re-auth |
-| `hermes mcp enable` / `disable` | Toggle |
-| `hermes mcp remove` | Uninstall |
-
-**Currently configured** (user):
-- `uteke` — 35 tools, memory/wiki
-- `21st` — 35 tools, UI components (Clerk OAuth)
-- `motion` — 2 tools, CSS easings
-
-**Add these for dev work:**
-- `github` (issues/PRs)
-- `playwright` (browser test)
-- `sentry` (error tracking)
-- `notion` (if pakai Notion)
-- `linear` (project mgmt)
-
----
-
-## 💾 Memory & Knowledge
-
-| Command | What |
-|---------|------|
-| `hermes memory` | Persistent memory (user + agent notes) |
-| `hermes memory-graph` | Knowledge graph view |
-| `hermes curator` | Curate / prune memories |
-| `hermes learning` | Learning mode (track what agent learns) |
-| `hermes journey` | Journey / history log |
-| `hermes pets` | Mascot pet (fun) |
-
-**Vault ≠ Memory.** Vault (`D:\Obsidian\AI-Agents`) is for long-form, human-readable. `hermes memory` is for short context, auto-recalled.
-
----
-
-## 📦 Project & Workspace
-
-| Command | What |
-|---------|------|
-| `hermes project` | Manage projects (named workspaces) |
-| `hermes worktree` | Git worktree per session (parallel) |
-| `hermes sessions` | List / search past sessions |
-| `hermes insights` | Usage insights / analytics |
-| `hermes monitoring` | Live monitoring dashboard |
-| `hermes checkpoints` | Save/load session checkpoints |
-| `hermes import` | Import from other tools |
-| `hermes import-agent` | Import agent config |
-| `hermes backup` | Backup config + memory |
-| `hermes dashboard` | Web dashboard |
-
-**Use worktrees** for parallel exploration without conflict:
-```bash
-hermes worktree add ../myproj-experiment
-hermes --in ../myproj-experiment chat
-```
-
----
-
-## 🔀 Workflow Features
-
-| Command | What |
-|---------|------|
-| `hermes hooks` | Lifecycle hooks (pre/post commands) |
-| `hermes cron` | Scheduled jobs (alias of `cronjob` tool) |
-| `hermes sync` | Sync state across machines |
-| `hermes kanban` | Kanban board view |
-| `hermes portal` | Web portal |
-| `hermes peer` | Peer-to-peer mode |
-| `hermes webhook` | Webhook integration |
-| `hermes claw` | ClawHub integration |
-
----
-
-## 🖥️ Computer Use & GUI
-
-| Command | What |
-|---------|------|
-| `hermes computer-use` | Drive desktop (click/type/screenshot) |
-| `hermes desktop` | Desktop app launcher |
-| `hermes gui` | GUI mode |
-| `hermes browser` | Built-in browser |
-| `hermes serve` | Serve web UI |
-
----
-
-## 💬 Channels (multi-platform)
-
-| Command | What |
-|---------|------|
-| `hermes whatsapp` | WhatsApp channel |
-| `hermes whatsapp-cloud` | WhatsApp Cloud API |
-| `hermes slack` | Slack channel |
-| `hermes send` | Send a message |
-| `hermes pairing` | Pair a device |
-
----
-
-## 🧪 Development
-
-| Command | What |
-|---------|------|
-| `hermes lsp` | LSP integration (use editor's LSP) |
-| `hermes debug` | Debug session |
-| `hermes dump` | Dump internal state |
-| `hermes completion` | Shell completion |
-| `hermes console` | Console mode |
-| `hermes acp` | Agent Communication Protocol |
-| `hermes gateway` | Gateway mode (API server) |
-| `hermes proxy` | Proxy mode |
-| `hermes serve` | Serve HTTP |
-| `hermes profile` | Profiling |
-| `hermes skin` | UI skin/theme |
-| `hermes plugins` | Manage plugins |
-| `hermes bundles` | Skill bundles (curated sets) |
-
----
-
-## 🔧 Toolsets (enable/disable at runtime)
-
-```bash
-hermes tools list    # see all
-hermes tools enable <name>
-hermes tools disable <name>
-```
-
-**Built-in:**
-| Toolset | Icon | Purpose | Default |
-|---------|------|---------|---------|
-| `web` | 🔍 | Web search & scraping | ✅ |
-| `browser` | 🌐 | Browser automation | ✅ |
-| `terminal` | 💻 | Shell & processes | ✅ |
-| `file` | 📁 | File operations | ✅ |
-| `code_execution` | ⚡ | Run code | ✅ |
-| `vision` | 👁️ | Image analysis | ✅ |
-| `video` | 🎬 | Video analysis | ❌ |
-| `image_gen` | 🎨 | Generate image | ✅ |
-| `video_gen` | 🎬 | Generate video | ❌ |
-| `x_search` | 🐦 | Twitter search | ❌ |
-| `tts` | 🔊 | Text-to-speech | ✅ |
-| `stt` | 🎙️ | Speech-to-text | ❌ |
-| `skills` | 📚 | Skill loading | ✅ |
-| `todo` | 📋 | Task planning | ✅ |
-| `memory` | 💾 | Persistent memory | ✅ |
-| `context_engine` | 🧩 | Context mgmt | ❌ |
-| `session_search` | 🔎 | Search past sessions | ✅ |
-| `clarify` | ❓ | Ask user | ✅ |
-| `delegation` | 👥 | Subagent spawn | ✅ |
-| `cronjob` | ⏰ | Scheduled tasks | ✅ |
-| `homeassistant` | 🏠 | Smart home | ❌ |
-| `spotify` | 🎵 | Music | ❌ |
-| `yuanbao` | 🤖 | Yuanbao groups | ❌ |
-| `computer_use` | 🖱️ | Drive desktop | ✅ |
-
-**Enable selectively** to cut token overhead for focused tasks:
-```bash
-# Coding-only session
-hermes tools enable web terminal file code_execution skills
-hermes tools disable tts image_gen computer_use stt video
-
-# Or via config:
+hermes tools list               # Cek toolset aktif
+# Optimalkan token untuk coding saja:
 hermes config set toolsets '["web", "terminal", "file", "code_execution", "skills"]'
+
+# Parallel git worktree:
+hermes worktree add ../exp-branch
+hermes --in ../exp-branch chat
 ```
 
 ---
 
-## 🤖 Delegation (subagents)
+## 9. 🧭 Quick Decision Matrix
 
-| Command | What |
-|---------|------|
-| `hermes delegate <task>` | Spawn isolated subagent (in chat) |
-| `delegate_task` (tool) | Same, in tool form |
-
-**Patterns:**
-- 2-3 subagents for parallel research → aggregate
-- Background = no wait, fires & returns summary
-- Children cannot ask user (give full context)
-
----
-
-## ⏰ Cron (scheduled jobs)
-
-| Command | What |
-|---------|------|
-| `hermes cron list` | Show scheduled jobs |
-| `hermes cron create` | New job (prompt + schedule) |
-| `hermes cron run` | Fire now (debug) |
-| `hermes cron update/pause/resume/remove` | Manage |
-
-**Common jobs to set up:**
-- `0 9 * * *` — daily vault sync reminder
-- `0 9 * * MON` — weekly session log review
-- `*/30 * * * *` — heartbeat / health check (if running a service)
+| Kebutuhan / Task | Tool Pilihan Utama | Alternatif / Cadangan |
+|---|---|---|
+| **Fitur baru kompleks / multi-file refactor** | **Antigravity IDE** (Planning Mode) | Claude Code / Hermes + `plan` skill |
+| **Quick bugfix / terminal vibe coding** | **Hermes Agent** (`--tui`) | Aider / OpenCode |
+| **Deploy web service ke VPS pribadi ($5)** | **OpenShip** | Coolify / Docker Compose manual |
+| **Deteksi objek cepat di edge tanpa Python** | **locate-anything.cpp** | LocalAI / ONNX Runtime |
+| **Visualisasi telemetri CCTV & kendaraan 3D** | **TrafficLab-3D** | Custom OpenCV + Three.js |
+| **Inspirasi layout landing page / hero section** | **Supahero.io** | Seesaw.website / Saaspo |
+| **Komponen UI modern React / Tailwind** | **21st.dev** | Shadcn UI official |
+| **Desain arsitektur sistem backend skala besar** | **ByteByteGo System-Design-101** | Next-AI-Draw-io / Mermaid.js |
 
 ---
 
-## 🧰 Bundles & Plugins
-
-```bash
-hermes bundles list           # curated skill bundles
-hermes bundles install <id>   # one-shot install
-hermes plugins list           # Hermes plugins
-hermes plugins enable <name>  # enable plugin
-```
-
----
-
-## 📋 Quick Recipes
-
-### Start a vibe-coding session
-```bash
-cd "D:/CODING-2026/<project>"
-hermes --tui --skills plan,simplify-code,test-driven-development
-```
-
-### Search & install a new skill
-```bash
-hermes skills search "react performance"
-hermes skills inspect <id>
-hermes skills install <id>
-```
-
-### Backup & sync
-```bash
-"D:\Obsidian\AI-Agents\sync-vault.bat"   # vault → GitHub
-hermes backup                             # config → backup file
-```
-
-### Doctor when broken
-```bash
-hermes doctor
-hermes logs
-hermes verify
-```
-
-### Switch model mid-session
-```bash
-hermes model    # interactive picker
-hermes fallback add  # chain
-```
-
----
-
-## 🆘 When Stuck
-| Symptom | Try |
-|---------|-----|
-| Tool not found | `hermes tools enable <name>` |
-| Auth failed | `hermes auth reset <provider>` then re-login |
-| Slow / expensive | `hermes config set max_turns 30` + reduce toolsets |
-| Lost session | `hermes sessions` to find, then `--resume <id>` |
-| Skills outdated | `hermes skills check` then `update` |
-| Vault drift | `sync-vault.bat` |
-| Crash on startup | `hermes logs` then `hermes --cli` (REPL fallback) |
-
----
-
-## See Also
-- [[00-MOCs/00-Home]] — vault home
-- [[60-Blueprints/VIBE_CODING]] — workflow
-- [[60-Blueprints/SOURCES]] — repo inspiration
-- [[60-Blueprints/HERMES_SETUP]] — current config & skill list
+- [[00-MOCs/00-Home]] — Vault Home
+- [[60-Blueprints/HERMES_COMMANDS]] — Manual lengkap 100% semua subcommands & toolsets Hermes
+- [[60-Blueprints/HERMES_SETUP]] — Detail konfigurasi khusus Hermes Agent
+- [[60-Blueprints/SOURCES]] — Repositori & referensi bacaan
+- [[60-Blueprints/VIBE_CODING]] — Workflow coding harian
+- [[60-Blueprints/MCP_STRATEGY]] — Strategi protokol alat MCP

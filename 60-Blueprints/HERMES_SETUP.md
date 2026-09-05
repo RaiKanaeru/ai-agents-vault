@@ -26,7 +26,7 @@ tags: [blueprint, hermes, setup]
 | `github-code-review` | Review PRs via gh CLI |
 | `node-inspect-debugger` | Node.js specific debug |
 | `hermes-agent` | Configure Hermes itself |
-| `claude-code` / `codex` / `opencode` | Delegate coding ke CLI lain |
+| `claude-code` / `codex` / `opencode` / `cmdc` | Delegate coding ke CLI lain |
 
 ## Recommended Tweaks
 
@@ -57,6 +57,7 @@ Saat task berat, delegate ke CLI agent:
 - **Claude Code** (`claude-code` skill) — untuk code review panjang, refactor besar
 - **Codex** (`codex` skill) — untuk test generation, doc generation
 - **OpenCode** (`opencode` skill) — untuk explore codebase
+- **Command Code** (`cmdc` skill) — untuk coding adaptif via taste learning (`taste-1`), fitur, & refactoring
 
 Spawn pattern:
 ```

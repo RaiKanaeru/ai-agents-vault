@@ -101,6 +101,7 @@ hermes skills check                # check for updates
 | `mcp-server-setup` | autonomous-ai-agents | Add/migrate/auth MCP servers |
 | `merge-reconciler` | autonomous-ai-agents | Resolve branch conflicts |
 | `opencode` | autonomous-ai-agents | Delegate ke OpenCode CLI |
+| `cmdc` | autonomous-ai-agents | Delegate ke Command Code CLI (taste learning) |
 | `architecture-diagram` | creative | Dark SVG arch diagrams |
 | `baoyu-*` | creative | Articles, infographics, comics |
 | `claude-design` | creative | One-off HTML artifacts |

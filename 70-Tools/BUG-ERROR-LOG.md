@@ -34,6 +34,11 @@ Format: **Tanggal — Masalah — Root cause — Solusi**. Catat SEMUA bug yang 
 - **Root cause:** versi urllib3 terlalu baru untuk requests terpasang.
 - **Solusi:** belum berdampak; kalau error → `pip install --upgrade requests` atau pin `urllib3<3` sesuai kebutuhan.
 
+## 2026-09-05 — npm terhalang file kosong di C:\Windows\System32\npm
+- **Masalah:** Perintah `npm` di PowerShell tidak menghasilkan output apa pun / diam (exit code 0 tanpa stdout).
+- **Root cause:** Terdapat file dummy 0 byte `C:\Windows\System32\npm` (dibuat 10/07/2026). Karena `System32` memiliki prioritas PATH di atas `Program Files\nodejs`, PowerShell mencoba menjalankan file kosong tersebut alih-alih `npm.cmd`.
+- **Solusi:** Jalankan instalasi menggunakan path eksplisit `& "C:\Program Files\nodejs\npm.cmd" ...` atau jalankan terminal Administrator dan hapus file dummy tersebut (`del C:\Windows\System32\npm`).
+
 ## Pola Tetap (jangan lupa)
 - `npx playwright install` jangan dijalankan (versi drift) — pakai installer bawaan masing-masing tool.
 - Snippet: crawl4ai `r.markdown.raw_markdown`; scrapling hasil `.css()` → `[all]`.

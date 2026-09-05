@@ -10,6 +10,7 @@ Sumber: 17 link yang user kirim. Status install dicek di mesin user (Windows 11,
 | **CodeGraph** (67k⭐, MIT) | Knowledge graph kode, Rust kernel, 100% lokal, support Hermes | ✅ `codegraph 1.6.0` (npm -g) | `codegraph init / sync / status` |
 | **mattpocock/skills** (233k⭐) | Skill engineering untuk coding agent | ✅ 6 skill terpilih terpasang | — |
 | **Taste Skill** | Anti-slop frontend skill untuk agent | ✅ 4 skill terpilih terpasang | — |
+| **Command Code** (cmdc) | AI coding agent dengan adaptif taste-learning | ✅ `cmdc 1.49.1` (npm -g) + Hermes skill | `cmdc -p "<task>"`, `cmdc taste learn .` |
 
 ## 🕷️ Scraping & Data
 | Tool | Apa | Status | Perintah kunci |

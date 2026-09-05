@@ -21,8 +21,9 @@ tags: [moc, root, home]
 
 ## Blueprints (lengkap & detail)
 - [[60-Blueprints/VIBE_CODING]] — workflow 6-phase
-- [[60-Blueprints/TOOLS_REFERENCE]] — reference lengkap `hermes --help` + toolsets
-- [[60-Blueprints/HERMES_SETUP]] — config & skill loaded
+- [[60-Blueprints/TOOLS_REFERENCE]] — general engineering & AI tools reference (Agent, Vision, DevOps, Design, CLI)
+- [[60-Blueprints/HERMES_COMMANDS]] — manual lengkap Hermes subcommands & toolsets (`hermes --help`)
+- [[60-Blueprints/HERMES_SETUP]] — config & skill loaded Hermes
 - [[60-Blueprints/SOURCES]] — repo & article referensi
 
 ## Folder Map

@@ -13,7 +13,19 @@ tags: [blueprint, sources, inspiration]
 | `addyosmani/agent-skills` | 6-phase workflow (DEFINE→PLAN→BUILD→VERIFY→REVIEW→SHIP), quality gates | https://github.com/addyosmani/agent-skills |
 | `usestrix/strix` | Security agent, `npx skills add` pattern, SKILL.md spec (agentskills.io) | https://github.com/usestrix/strix |
 | `pbakaus/impeccable` | Frontend craft, motion/animation pattern, design taste | https://github.com/pbakaus/impeccable |
-| `agentskills.io` | SKILL.md spec standard (frontmatter format) | https://agentskills.io/ |
+| `mudler/locate-anything.cpp` | C++17/ggml inference for open-vocab object detection (NVIDIA LocateAnything-3B, no Python runtime) | https://github.com/mudler/locate-anything.cpp |
+| `langgenius/dify` | Visual LLM application & agent orchestration platform (RAG, workflow, prompt IDE) | https://github.com/langgenius/dify |
+| `oblien/openship` | Self-hosted PaaS (Vercel/Coolify alternative) with zero-config deploy, SSL, CI/CD | https://github.com/oblien/openship |
+| `ByteByteGoHq/system-design-101` | Visual system design diagrams (architecture, networking, DB, microservices) | https://github.com/ByteByteGoHq/system-design-101 |
+| `duy-phamduc68/trafficlab-3d` | 3D digital twin traffic simulation from CCTV MP4 + Google Maps (YOLO tracking + 3D floor boxes) | https://github.com/duy-phamduc68/TrafficLab-3D |
+| `DayuanJiang/next-ai-draw-io` | Text-to-diagram draw.io integration in Next.js (architecture, flowcharts) | https://github.com/DayuanJiang/next-ai-draw-io |
+
+## Design Inspiration & UI References
+| Resource | Fokus | Link |
+|----------|-------|------|
+| `supahero.io` | Curated library khusus hero sections & above-the-fold layout | https://supahero.io/ |
+| `seesaw.website` | Award-winning interactive web design, high-taste motion & typography | https://www.seesaw.website/ |
+| `saaspo.com` | Real-world SaaS design library (pricing, auth, dashboard, landing pages) | https://saaspo.com/ |
 
 ## Articles / Blog
 | Article | Author | Date | Key insight |
@@ -37,3 +49,5 @@ tags: [blueprint, sources, inspiration]
 - [ ] `continuedev/continue` — IDE integration
 - [ ] Search: "AGENT.md vs README.md" debate
 - [ ] Search: "AI agent memory architecture 2026"
+- [ ] Cek patch CVE-2026-50756/50757 pada `next-ai-draw-io` sebelum self-host
+
